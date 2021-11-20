@@ -9,7 +9,6 @@ import {
   Button
 } from 'ant-design-vue'
 
-import 'ant-design-vue/dist/antd.css';
+import 'ant-design-vue/dist/antd.css'
 
 createApp(App).use(router).use(store).use(Button).mount('#app')
-

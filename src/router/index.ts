@@ -1,4 +1,3 @@
-//router目录下的index.js
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [
