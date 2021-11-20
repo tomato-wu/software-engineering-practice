@@ -13,3 +13,9 @@ Since TypeScript cannot handle type information for `.vue` imports, they are shi
 # vue风格指南
 
 https://mp.weixin.qq.com/s/L7ncvBBrcmcenU5LhEYd6Q
+
+# eslint 官网
+
+https://eslint.bootcss.com/docs/user-guide/getting-started
+
+https://blog.csdn.net/u012961419/article/details/107991794
