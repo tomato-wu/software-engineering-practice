@@ -10,12 +10,14 @@ import qs from 'qs'
  * @param {param} 请求传递参数
  * @param {option} 附加配置
  */
+
+
 export function XRequest(properties: RequestParam) {
   let data: { param?: any; data?: any; }
   const { url, method = 'get', param, headers, options } = properties
   // const CONTENT_TYPE = headers!['Content-Type']
 
-  return new Promise((resolve:(value: AxiosResponse) => void, reject) => {
+  return new Promise((resolve: (value: AxiosResponse) => void, reject) => {
     if (options?.isMock) {
       // 配置mock的 url地址
     }
