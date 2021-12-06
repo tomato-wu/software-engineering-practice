@@ -79,18 +79,23 @@ export default defineComponent({
   font-family: "Poppins", sans-serif;
 }
 
+body {
+  background-image: url(../assets/csdn.jpg);
+}
+
 section {
   position: relative;
   min-height: 100vh;
-  background: rgb(34, 61, 101);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
+  background-image: url(../assets/csdn.jpg);
 }
 
 section .container {
   position: relative;
+  border-radius: 5%;
   width: 800px;
   height: 500px;
   background: #fff;
@@ -111,7 +116,6 @@ section .container .user .imgBx {
   position: relative;
   width: 50%;
   height: 100%;
-  background: #ff0;
   transition: 0.5s;
 }
 
