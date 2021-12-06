@@ -18,20 +18,24 @@
       <a href="https://antdv.com" target="_blank" rel="noopener noreferrer">Navigation Four - Link</a>
     </a-menu-item>
   </a-menu>
+
+  <BaseBookItemVue />
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { Menu } from 'ant-design-vue'
-import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons-vue';
+import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons-vue'
+import BaseBookItemVue from '../component/BaseBookItem.vue'
 
 export default defineComponent({
   name: 'homePage',
-  component: {
+  components: {
     'a-menu': Menu,
     'a-menu-item': Menu.Item,
     MailOutlined,
     AppstoreOutlined,
     SettingOutlined,
+    BaseBookItemVue
   },
   setup() {
     const current = ref<string[]>(['mail']);

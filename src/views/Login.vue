@@ -46,27 +46,23 @@ import { defineComponent, reactive } from 'vue'
 
 export default defineComponent({
   setup() {
-
     const state = reactive({
       isActive: false
     })
 
-    function goRegister() {
+    function goRegister () {
       state.isActive = true
     }
 
-    function goLogin() {
+    function goLogin () {
       state.isActive = false
     }
-
 
     return {
       state,
       goRegister,
       goLogin
     }
-
-
   }
 })
 </script>
