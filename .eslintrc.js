@@ -15,7 +15,7 @@ module.exports = {
   },
   plugins: [
     "vue",
-    "@typescript-eslint"
+    "@typescript-eslint",
   ],
   rules: {
     "vue/no-v-model-argument": 0,

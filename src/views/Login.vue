@@ -8,9 +8,13 @@
         <div class="formBx">
           <form>
             <h2>Sign In</h2>
-            <input type="text" placeholder="Username" />
-            <input type="password" placeholder="Password" />
-            <input type="submit" value="Login" />
+            <input v-model="loginInline.username" type="text" placeholder="Username" />
+            <input
+              v-model="loginInline.password"
+              type="password"
+              placeholder="Password"
+            />
+            <input @click="setLogin($event)" type="submit" value="Login" />
             <p class="signup">
               Don't have an account ?
               <a @click="goRegister">Sign Up.</a>
@@ -22,11 +26,15 @@
         <div class="formBx">
           <form>
             <h2>Create an Account</h2>
-            <input type="text" placeholder="Username" />
-            <input type="email" placeholder="Create Password" />
+            <input v-model="registInline.username" type="text" placeholder="Username" />
+            <input
+              v-model="registInline.password"
+              type="email"
+              placeholder="Create Password"
+            />
             <input type="password" placeholder="Confirm Password" />
             <input type="password" placeholder="name" />
-            <input type="submit" value="Sign up" />
+            <input @click="setRegist($event)" type="submit" value="Sign up" />
             <p class="signup">
               Already have an account ?
               <a @click="goLogin">Sign In.</a>
@@ -42,29 +50,54 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue'
+import { defineComponent, reactive } from "vue";
+import { useLogin, useRegist } from "../controllers/login";
 
 export default defineComponent({
   setup() {
     const state = reactive({
-      isActive: false
-    })
+      isActive: false,
+    });
 
-    function goRegister () {
-      state.isActive = true
+    function goRegister() {
+      state.isActive = true;
     }
 
-    function goLogin () {
-      state.isActive = false
+    function goLogin() {
+      state.isActive = false;
     }
+
+    // 登录逻辑
+    const loginInline = reactive({
+      username: "root",
+      password: "123456",
+    });
+    const setLogin = async (e) => {
+      e.preventDefault();
+      await useLogin(loginInline);
+    };
+
+    // 注册逻辑
+    const registInline = reactive({
+      username: "",
+      password: "",
+    });
+    const setRegist = async (e) => {
+      e.preventDefault();
+      await useRegist(registInline);
+    };
 
     return {
       state,
+      loginInline,
+      registInline,
       goRegister,
-      goLogin
-    }
-  }
-})
+      goLogin,
+      setLogin,
+      setRegist,
+    };
+  },
+});
 </script>
 
 <style scoped>
