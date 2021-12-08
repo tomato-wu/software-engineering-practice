@@ -9,11 +9,7 @@
           <form>
             <h2>Sign In</h2>
             <input v-model="loginInline.username" type="text" placeholder="Username" />
-            <input
-              v-model="loginInline.password"
-              type="password"
-              placeholder="Password"
-            />
+            <input v-model="loginInline.password" type="password" placeholder="Password" />
             <input @click="setLogin($event)" type="submit" value="Login" />
             <p class="signup">
               Don't have an account ?
@@ -27,11 +23,7 @@
           <form>
             <h2>Create an Account</h2>
             <input v-model="registInline.username" type="text" placeholder="Username" />
-            <input
-              v-model="registInline.password"
-              type="email"
-              placeholder="Create Password"
-            />
+            <input v-model="registInline.password" type="email" placeholder="Create Password" />
             <input type="password" placeholder="Confirm Password" />
             <input type="password" placeholder="name" />
             <input @click="setRegist($event)" type="submit" value="Sign up" />
@@ -72,7 +64,7 @@ export default defineComponent({
       username: "root",
       password: "123456",
     });
-    const setLogin = async (e) => {
+    const setLogin = async (e: any) => {
       e.preventDefault();
       await useLogin(loginInline);
     };
@@ -82,7 +74,7 @@ export default defineComponent({
       username: "",
       password: "",
     });
-    const setRegist = async (e) => {
+    const setRegist = async (e: any) => {
       e.preventDefault();
       await useRegist(registInline);
     };

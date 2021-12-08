@@ -2,6 +2,8 @@ import { XRequest } from "../utils/axios"
 import { LoginParams, RegistParams } from "./models/user"
 import { API } from "../enum/api"
 import { message } from "ant-design-vue"
+import { useGo } from "../utils/usePage"
+import { PageEnum } from "../enum/pageEnum"
 
 /**
  * 登录接口
@@ -9,15 +11,17 @@ import { message } from "ant-design-vue"
  * @return void
  */
 
-export async function useLogin (params: LoginParams) {
-  XRequest({ 
-    url: `${API.LOGIN}?loginName=${params.username}&password=${params.password}`, 
+export async function useLogin(params: LoginParams) {
+  XRequest({
+    url: `${API.LOGIN}?loginName=${params.username}&password=${params.password}`,
     method: 'post'
   }).then(res => {
     if (res.code === 200) {
       message.success("登录成功")
+      const go = useGo()
+      go(PageEnum.HOMEPAGE)
     }
-   })
+  })
 }
 
 /**
