@@ -1,13 +1,13 @@
 import { RouteLocationRaw } from 'vue-router'
-import { API } from '../enum/api'
+import { PageEnum } from '../enum/PageEnum'
 import router from '../router'
 
-export type RouteLocationRawEx = Omit<RouteLocationRaw, 'path'> & { path: API };
+export type RouteLocationRawEx = Omit<RouteLocationRaw, 'path'> & { path: PageEnum };
 
 export function useGo() {
   const { push, replace } = router
 
-  function go(opt: string | RouteLocationRawEx | API = API.LOGIN, isReplace = false) {
+  function go(opt: string | RouteLocationRawEx | PageEnum = PageEnum.LOGIN, isReplace = false) {
     if (typeof opt === 'string') {
       isReplace ? replace(opt) : push(opt)
     } else {
