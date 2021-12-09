@@ -8,13 +8,54 @@
   </a-menu>
 
   <a-row class="searchBoxStyle">
-    <a-col :span="6">叮叮图书</a-col>
+    <a-col :span="3" :offset="4">
+      <span class="logoText">叮叮图书</span>
+    </a-col>
     <a-col :span="12">
       <SearchBoxVue />
     </a-col>
   </a-row>
 
-  <BaseBookItemVue />
+  <a-row :gutter="16" style="margin-top:30px;">
+    <a-col class="gutter-row" :span="4">
+      <BaseBookItemVue />
+    </a-col>
+    <a-col class="gutter-row" :span="4">
+      <BaseBookItemVue />
+    </a-col>
+    <a-col class="gutter-row" :span="4">
+      <BaseBookItemVue />
+    </a-col>
+    <a-col class="gutter-row" :span="4">
+      <BaseBookItemVue />
+    </a-col>
+    <a-col class="gutter-row" :span="4">
+      <BaseBookItemVue />
+    </a-col>
+    <a-col class="gutter-row" :span="4">
+      <BaseBookItemVue />
+    </a-col>
+  </a-row>
+  <a-row :gutter="16" style="margin-top:30px;">
+    <a-col class="gutter-row" :span="4">
+      <BaseBookItemVue />
+    </a-col>
+    <a-col class="gutter-row" :span="4">
+      <BaseBookItemVue />
+    </a-col>
+    <a-col class="gutter-row" :span="4">
+      <BaseBookItemVue />
+    </a-col>
+    <a-col class="gutter-row" :span="4">
+      <BaseBookItemVue />
+    </a-col>
+    <a-col class="gutter-row" :span="4">
+      <BaseBookItemVue />
+    </a-col>
+    <a-col class="gutter-row" :span="4">
+      <BaseBookItemVue />
+    </a-col>
+  </a-row>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
@@ -48,5 +89,8 @@ export default defineComponent({
 <style scoped>
 .searchBoxStyle {
   margin-top: 20px;
+}
+.logoText {
+  font-size: 25px;
 }
 </style>
