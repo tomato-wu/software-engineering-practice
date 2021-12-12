@@ -2,6 +2,7 @@ import { XRequest } from "../utils/axios"
 import { LoginParams, RegistParams } from "./models/user"
 import { API } from "../enum/api"
 import { message } from "ant-design-vue"
+// 页面跳转
 import { useGo } from "../utils/usePage"
 import { PageEnum } from "../enum/pageEnum"
 
