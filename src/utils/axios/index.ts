@@ -16,7 +16,7 @@ export function XRequest(properties: RequestParam) {
   const { url, method = 'get', param, headers, options } = properties
   // const CONTENT_TYPE = headers!['Content-Type']
 
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve: (value: any) => void, reject) => {
     if (options?.isMock) {
       // 配置mock的 url地址
     }

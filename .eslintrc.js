@@ -25,6 +25,7 @@ module.exports = {
     "prefer-promise-reject-errors": 0,
     "no-unused-expressions": 0,
     "no-sequences": 0,
+    "semi": false,
     "no-tabs": "off"
   }
 };
