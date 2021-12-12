@@ -13,8 +13,9 @@ import { PageEnum } from "../enum/pageEnum"
 
 export async function useLogin(params: LoginParams) {
   XRequest({
-    url: `${API.LOGIN}?loginName=${params.username}&password=${params.password}`,
-    method: 'post'
+    url: API.LOGIN,
+    method: 'post',
+    param: params
   }).then(res => {
     if (res.code === 200) {
       message.success("登录成功")

@@ -1,5 +1,5 @@
 export interface LoginParams {
-  username: string,
+  loginName: string,
   password: string
 }
 

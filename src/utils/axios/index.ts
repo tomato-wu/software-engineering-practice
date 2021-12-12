@@ -32,7 +32,7 @@ export function XRequest(properties: RequestParam) {
     // Content-Type: application/x-www-form-urlencoded (form表单) —— 需要 qs 格式化
     else if (method === 'post') {
       // post 请求使用 data 提交
-      data = { data: qs.stringify(param) }
+      data = { data: JSON.stringify(param) }
     }
 
     // 实际的请求方法
