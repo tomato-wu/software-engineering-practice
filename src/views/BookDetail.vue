@@ -35,8 +35,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted } from "vue";
 import { Button, Row, Col } from "ant-design-vue";
+import { useRoute } from "vue-router";
+import { BookDetail } from "../controllers/homepage";
 
 export default defineComponent({
   components: {
@@ -44,7 +46,16 @@ export default defineComponent({
     "a-row": Row,
     "a-col": Col,
   },
-  setup() {},
+  setup() {
+    const route = useRoute()
+    const BookId = route.params.id as string
+    onMounted(async () => {
+      const bookdetail = await BookDetail(BookId);
+      console.log(bookdetail);
+
+
+    })
+  },
 });
 </script>
 

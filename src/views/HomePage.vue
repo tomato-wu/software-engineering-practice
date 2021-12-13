@@ -23,7 +23,7 @@
     >
       <!--到时v-for拿数据渲染然后用 handleDetail跳转详情-->
       <BaseBookItemVue
-        @click="handleDetail({ id: 1 })"
+        @click="handleDetail(item.id)"
         :bookName="item.bookName"
         :author="item.author"
         :imgUrl="item.imgUrl"
@@ -81,8 +81,8 @@ export default defineComponent({
 
     })
     const handleDetail = (item: any) => {
-      console.log(item.id);
-      router.push("/detail/" + item.id);
+      console.log(item);
+      router.push("/detail/" + item);
     };
 
     // 分页
