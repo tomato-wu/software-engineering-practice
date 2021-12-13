@@ -25,9 +25,10 @@ export function XRequest(properties: RequestParam) {
     if (method === 'get') {
       data = { params: param }
     }
+
     // 文件上传post请求不需要 qs 格式化数据
-    else if (headers && headers['Content-Type'] === 'multipart/form-data') {
-      data = { data: param }
+    else if (headers && headers['Content-Type'] === 'image/jpeg') {
+      data = { params: param }
     }
     // Content-Type: application/x-www-form-urlencoded (form表单) —— 需要 qs 格式化
     else if (method === 'post') {

@@ -10,6 +10,8 @@
             <h2>Sign In</h2>
             <input v-model="loginInline.loginName" type="text" placeholder="Username" />
             <input v-model="loginInline.password" type="password" placeholder="Password" />
+            <input v-model="loginInline.Captcha" type="text" placeholder="Captcha" />
+            <img :src="state.Captcha" alt="无法显示" />
             <input @click="setLogin($event)" type="submit" value="Login" />
             <p class="signup">
               Don't have an account ?
@@ -42,13 +44,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from "vue";
-import { useLogin, useRegist } from "../controllers/login";
+import { defineComponent, onMounted, reactive, ref } from "vue";
+import { GetCaptcha, useLogin, useRegist } from "../controllers/login";
 
 export default defineComponent({
   setup() {
     const state = reactive({
       isActive: false,
+      Captcha: ''
+    });
+
+    const loginInline = reactive({
+      loginName: "admin",
+      password: "123",
+      Captcha: ''
     });
 
     function goRegister() {
@@ -59,11 +68,14 @@ export default defineComponent({
       state.isActive = false;
     }
 
+    onMounted(async () => {
+
+      state.Captcha = await GetCaptcha();
+
+    })
+
     // 登录逻辑
-    const loginInline = reactive({
-      loginName: "admin",
-      password: "123",
-    });
+
     const setLogin = async (e: any) => {
       e.preventDefault();
       await useLogin(loginInline);

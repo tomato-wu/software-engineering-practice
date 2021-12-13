@@ -26,6 +26,21 @@ export async function useLogin(params: LoginParams) {
   })
 }
 
+export async function GetCaptcha() {
+  return XRequest({
+    url: API.Captcha,
+    method: 'get',
+  }).then(async (data) => {
+    console.log(data);
+
+    return Promise.resolve(data)
+  }).catch(e => {
+    console.log('报错了')
+    console.log(e)
+  })
+}
+
+
 /**
  * 注册接口
  * @param {LoginParam} 注册参数(用户名，密码，新密码)
