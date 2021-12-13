@@ -9,11 +9,7 @@
           <form>
             <h2>Sign In</h2>
             <input v-model="loginInline.loginName" type="text" placeholder="Username" />
-            <input
-              v-model="loginInline.password"
-              type="password"
-              placeholder="Password"
-            />
+            <input v-model="loginInline.password" type="password" placeholder="Password" />
             <input @click="setLogin($event)" type="submit" value="Login" />
             <p class="signup">
               Don't have an account ?
@@ -26,12 +22,8 @@
         <div class="formBx">
           <form>
             <h2>Create an Account</h2>
-            <input v-model="registInline.username" type="text" placeholder="Username" />
-            <input
-              v-model="registInline.password"
-              type="email"
-              placeholder="Create Password"
-            />
+            <input v-model="registInline.loginName" type="text" placeholder="Username" />
+            <input v-model="registInline.password" type="email" placeholder="Create Password" />
             <input type="password" placeholder="Confirm Password" />
             <input type="password" placeholder="name" />
             <input @click="setRegist($event)" type="submit" value="Sign up" />
