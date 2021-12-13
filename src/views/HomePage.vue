@@ -1,8 +1,10 @@
 <template>
   <a-menu v-model:selectedKeys="current" mode="horizontal" theme="dark">
-    <a-menu-item v-for="item in NavItem" :key="item.categoryId">{{
-      item.categoryName
-    }}</a-menu-item>
+    <a-menu-item v-for="item in NavItem" :key="item.categoryId">
+      {{
+        item.categoryName
+      }}
+    </a-menu-item>
   </a-menu>
 
   <!-- 顶部搜索栏 -->
@@ -14,10 +16,7 @@
       <SearchBoxVue />
     </a-col>
   </a-row>
-  <img
-    src="http://img3.doubanio.com/view/subject/s/public/s29849366.jpg"
-    alt="无法正常显示"
-  />
+
   <!-- 图书项 -->
   <a-row :gutter="16" class="row">
     <a-col
