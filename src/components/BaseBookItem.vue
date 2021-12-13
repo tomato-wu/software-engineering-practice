@@ -2,8 +2,8 @@
   <div class="book-item">
     <img class="book-item__img" :src="imgUrl" />
     <div class="book-item__detail">
-      <div class="price">{{ author }}</div>
       <div class="descr">{{ bookName }}</div>
+      <div class="price">作者：{{ author }}</div>
     </div>
   </div>
 </template>
@@ -47,10 +47,10 @@ export default defineComponent({
 }
 .book-item__img {
   width: 100%;
-  height: 120px;
+  height: 170px;
 }
 .book-item__detail .price {
-  color: red;
+  font-size: small;
 }
 
 .book-item__detail .descr {
@@ -58,5 +58,6 @@ export default defineComponent({
   color: grey;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin: 10px;
 }
 </style>

@@ -28,8 +28,8 @@
     >
       <!--到时v-for拿数据渲染然后用 handleDetail跳转详情-->
       <BaseBookItemVue
-        @click="handleDetail({ id: 1 })"
-        :book-name="item.bookName"
+        @click="handleDetail(item.id)"
+        :bookName="item.bookName"
         :author="item.author"
         :img-url="item.imgUrl"
       />
@@ -38,8 +38,8 @@
 
   <!-- 分页 -->
   <!--感觉一个row来包裹应该就好-->
-  <a-row style="margin-top: 30px" justify="end">
-    <a-col :span="6">
+  <a-row style="margin-top: 80px" justify="end">
+    <a-col :span="9">
       <a-pagination
         :total="85"
         :show-total="(total) => `一共 ${total} 本图书`"
@@ -85,8 +85,8 @@ export default defineComponent({
       console.log(bookItem.value);
     });
     const handleDetail = (item: any) => {
-      console.log(item.id);
-      router.push("/detail/" + item.id);
+      console.log(item);
+      router.push("/detail/" + item);
     };
 
     // 分页

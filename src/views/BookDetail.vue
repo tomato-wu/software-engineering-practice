@@ -3,40 +3,75 @@
   <div class="book">
     <a-row :gutter="32">
       <a-col :span="6">
-        <img src="../assets/csdn.jpg" class="book__image" />
+        <img :src="bookDetail.imgUrl" class="book__image" />
       </a-col>
       <a-col :span="18">
         <div class="book__detail">
-          <!--v-for 渲染作者 xxx等-->
+          <!-- 书名： -->
           <div class="book__detail__line">
-            <span>作者</span>
-            <span>东野圭吾</span>
+            <span>书名:</span>
+            <span>{{ bookDetail.bookName }}</span>
           </div>
+          <!-- 作者 -->
           <div class="book__detail__line">
-            <span>作者</span>
-            <span>东野圭吾</span>
+            <span>作者:</span>
+            <span>{{ bookDetail.author }}</span>
           </div>
+          <!-- 出版社 -->
           <div class="book__detail__line">
-            <span>作者</span>
-            <span>东野圭吾</span>
+            <span>出版社:</span>
+            <span>{{ bookDetail.publishingHouse }}</span>
           </div>
+          <!-- 出版年 -->
+          <div class="book__detail__line">
+            <span>出版年:</span>
+            <span>{{ bookDetail.yearOfPublication }}</span>
+          </div>
+          <!--定价  -->
+          <div class="book__detail__line">
+            <span>定价:</span>
+            <span>{{ bookDetail.originalPrice }}</span>
+          </div>
+          <!-- 简介： -->
+          <div class="book__detail__line">
+            <span>简介：</span>
+            <span>{{ bookDetail.briefIntroduction }}</span>
+          </div>
+          <!-- ISBN： -->
+          <div class="book__detail__line">
+            <span>ISBN：</span>
+            <span>{{ bookDetail.isbn }}</span>
+          </div>
+
           <!--书评信息-->
-          <div class="book__detail__comment">内容区域</div>
-          <a-button type="primary">借阅</a-button>
+          <div class="book__detail__comment">
+            <span>标签：</span>
+            <span>{{ bookDetail.label }}</span>
+          </div>
+          <a-button type="primary" danger class="BuyBtnStyle">购买</a-button>
+          <a-button type="primary" class="AddCarStyle">添加购物车</a-button>
         </div>
       </a-col>
     </a-row>
     <hr class="hr-line" />
+    <!-- 作者简介： -->
     <div class="book__aurthor">
-      <span class="mg-bottom">作者简介</span>
-      <span>xxxxxxxxx</span>
+      <span class="mg-bottom">作者简介:</span>
+      <span>{{ bookDetail.authorIntroduction }}</span>
+    </div>
+    <!-- 内容简介： -->
+    <div class="book__aurthor">
+      <span class="mg-bottom">内容简介:</span>
+      <span>{{ bookDetail.catalog }}</span>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import { Button, Row, Col } from "ant-design-vue";
+import { useRoute } from "vue-router";
+import { BookDetail } from "../controllers/homepage";
 
 export default defineComponent({
   components: {
@@ -44,7 +79,19 @@ export default defineComponent({
     "a-row": Row,
     "a-col": Col,
   },
-  setup() {},
+  setup() {
+    const route = useRoute()
+    const BookId = route.params.id as string
+    const bookDetail = ref({}) as any
+    onMounted(async () => {
+      bookDetail.value = await BookDetail(BookId);
+      console.log(bookDetail.value);
+
+    })
+    return {
+      bookDetail
+    }
+  },
 });
 </script>
 
@@ -81,9 +128,17 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   text-align: start;
+  margin-top: 30px;
 }
 
 .mg-bottom {
   margin: 0 0 30px;
+}
+.BuyBtnStyle {
+  margin: 30px;
+  width: 150px;
+}
+.AddCarStyle {
+  width: 150px;
 }
 </style>
