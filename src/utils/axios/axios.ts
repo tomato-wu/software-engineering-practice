@@ -12,7 +12,7 @@ export const http: AxiosInstance = axios.create({
   headers: {
     // 默认以form-data的形式传递数据给后台
     'Content-Type': 'application/json',
-    Accept: 'application/json;image/jpeg'
+    Accept: 'application/json'
   }
 })
 

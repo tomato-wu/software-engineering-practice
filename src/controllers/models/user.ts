@@ -1,7 +1,7 @@
 export interface LoginParams {
   loginName: string,
   password: string,
-  Captcha: string
+  code: string
 }
 
 export interface RegistParams {

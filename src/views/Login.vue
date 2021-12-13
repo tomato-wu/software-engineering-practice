@@ -15,7 +15,7 @@
             <!-- 验证码 -->
             <a-row>
               <a-col :span="15">
-                <input v-model="loginInline.Captcha" type="text" placeholder="Captcha" />
+                <input v-model="loginInline.code" type="text" placeholder="Captcha" />
               </a-col>
               <a-col :span="5">
                 <img :src="state.Captcha" alt="无法显示" style="margin: 9px;" />
@@ -71,7 +71,7 @@ export default defineComponent({
     const loginInline = reactive({
       loginName: "admin",
       password: "123",
-      Captcha: ''
+      code: ''
     });
 
     function goRegister() {
