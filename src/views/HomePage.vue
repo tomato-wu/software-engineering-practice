@@ -44,7 +44,7 @@ import { MailOutlined, AppstoreOutlined, SettingOutlined } from "@ant-design/ico
 import BaseBookItemVue from "../components/BaseBookItem.vue";
 import SearchBoxVue from "../components/SearchBox.vue";
 import { useRouter } from "vue-router";
-import { GetNavItem } from "../controllers/homepage";
+import { BookItem, GetNavItem } from "../controllers/homepage";
 
 export default defineComponent({
   name: "homePage",
@@ -63,8 +63,13 @@ export default defineComponent({
     const current = ref<string[]>(["mail"]);
     const router = useRouter();
     const NavItem = ref([]) as any;
+    const bookItem = ref([]) as any;
+
     onMounted(async () => {
       NavItem.value = await GetNavItem();
+      bookItem.value = await BookItem(1);
+      console.log(bookItem.value);
+
     })
     const handleDetail = (item: any) => {
       console.log(item.id);
@@ -74,7 +79,8 @@ export default defineComponent({
     return {
       current,
       handleDetail,
-      NavItem
+      NavItem,
+      bookItem
     };
   },
 });
@@ -91,7 +97,7 @@ export default defineComponent({
 .row {
   margin: 30px 0 0 !important;
 }
-.gutter {
+.gutter-row {
   text-align: center;
 }
 </style>

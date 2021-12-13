@@ -17,3 +17,15 @@ export async function GetNavItem() {
     console.log(e)
   })
 }
+
+export async function BookItem(pageNum: number) {
+  return XRequest({
+    url: `${API.BOOKITEM}?pageNum=${pageNum}`,
+    method: 'get',
+  }).then(async (data) => {
+    return Promise.resolve(data.data)
+  }).catch(e => {
+    console.log('报错了')
+    console.log(e)
+  })
+}
