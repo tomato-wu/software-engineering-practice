@@ -8,10 +8,19 @@
         <div class="formBx">
           <form>
             <h2>Sign In</h2>
+            <!-- 账号 -->
             <input v-model="loginInline.loginName" type="text" placeholder="Username" />
+            <!-- 密码 -->
             <input v-model="loginInline.password" type="password" placeholder="Password" />
-            <input v-model="loginInline.Captcha" type="text" placeholder="Captcha" />
-            <img :src="state.Captcha" alt="无法显示" />
+            <!-- 验证码 -->
+            <a-row>
+              <a-col :span="15">
+                <input v-model="loginInline.Captcha" type="text" placeholder="Captcha" />
+              </a-col>
+              <a-col :span="5">
+                <img :src="state.Captcha" alt="无法显示" style="margin: 9px;" />
+              </a-col>
+            </a-row>
             <input @click="setLogin($event)" type="submit" value="Login" />
             <p class="signup">
               Don't have an account ?
@@ -46,8 +55,13 @@
 <script lang="ts">
 import { defineComponent, onMounted, reactive, ref } from "vue";
 import { GetCaptcha, useLogin, useRegist } from "../controllers/login";
+import { Menu, Row, Col, Pagination } from "ant-design-vue";
 
 export default defineComponent({
+  components: {
+    "a-row": Row,
+    "a-col": Col,
+  },
   setup() {
     const state = reactive({
       isActive: false,
@@ -69,13 +83,10 @@ export default defineComponent({
     }
 
     onMounted(async () => {
-
-      state.Captcha = await GetCaptcha();
-
+      state.Captcha = 'http://192.168.131.125:8080/captcha';
     })
 
     // 登录逻辑
-
     const setLogin = async (e: any) => {
       e.preventDefault();
       await useLogin(loginInline);
