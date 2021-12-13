@@ -1,9 +1,9 @@
 <template>
   <div class="book-item">
-    <img class="book-item__img" src="../assets/logo.png" alt="" />
+    <img class="book-item__img" :src="imgUrl" />
     <div class="book-item__detail">
-      <div class="price">￥31.82</div>
-      <div class="descr">2021春 金星教育小学教材全解六年级数学下册 RJ人教</div>
+      <div class="price">{{ author }}</div>
+      <div class="descr">{{ bookName }}</div>
     </div>
   </div>
 </template>
@@ -12,7 +12,23 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  setup() {},
+  name: 'BaseBookItem',
+  props: {
+    bookName: {
+      type: String,
+      default: ''
+    },
+    author: {
+      type: String,
+      default: ''
+    },
+    imgUrl: {
+      type: String,
+      default: ''
+    },
+
+  },
+  setup() { },
 });
 </script>
 

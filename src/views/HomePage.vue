@@ -13,24 +13,19 @@
   </a-row>
 
   <a-row :gutter="16" class="row">
-    <a-col class="gutter-row margin-top-30" :span="6">
+    <a-col
+      class="gutter-row margin-top-30"
+      :span="6"
+      v-for="(item,index) in bookItem.records"
+      :key="index"
+    >
       <!--到时v-for拿数据渲染然后用 handleDetail跳转详情-->
-      <BaseBookItemVue @click="handleDetail({ id: 1 })" />
-    </a-col>
-    <a-col class="gutter-row margin-top-30" :span="6">
-      <BaseBookItemVue />
-    </a-col>
-    <a-col class="gutter-row margin-top-30" :span="6">
-      <BaseBookItemVue />
-    </a-col>
-    <a-col class="gutter-row margin-top-30" :span="6">
-      <BaseBookItemVue />
-    </a-col>
-    <a-col class="gutter-row margin-top-30" :span="6">
-      <BaseBookItemVue />
-    </a-col>
-    <a-col class="gutter-row margin-top-30" :span="6">
-      <BaseBookItemVue />
+      <BaseBookItemVue
+        @click="handleDetail({ id: 1 })"
+        :bookName="item.bookName"
+        :author="item.author"
+        :imgUrl="item.imgUrl"
+      />
     </a-col>
   </a-row>
 
