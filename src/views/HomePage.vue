@@ -33,8 +33,8 @@
 
   <!-- 分页 -->
   <!--感觉一个row来包裹应该就好-->
-  <a-row style="margin-top: 30px" justify="end">
-    <a-col :span="6">
+  <a-row style="margin-top: 80px;" justify="end">
+    <a-col :span="9">
       <a-pagination
         :total="85"
         :show-total="total => `一共 ${total} 本图书`"

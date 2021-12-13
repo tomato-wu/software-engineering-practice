@@ -49,7 +49,7 @@ export default defineComponent({
 }
 .book-item__img {
   width: 100%;
-  height: 120px;
+  height: 170px;
 }
 .book-item__detail .price {
   font-size: small;

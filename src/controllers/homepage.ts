@@ -32,7 +32,7 @@ export async function BookItem(pageNum: number) {
 
 export async function BookDetail(BookId: String) {
   return XRequest({
-    url: `${API.BOOKITEM}/${BookId}`,
+    url: `${API.BookDetail}/${BookId}`,
     method: 'get',
   }).then(async (data) => {
     return Promise.resolve(data.data)
