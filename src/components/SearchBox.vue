@@ -11,6 +11,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { Input } from 'ant-design-vue'
+import { SearchBook } from '../controllers/homepage';
 
 export default defineComponent({
   name: "SearchBox",
@@ -20,15 +21,16 @@ export default defineComponent({
   },
   setup() {
     const value = ref<string>('');
+    const SearchBookInfo = ref([]) as any;
 
-    const onSearch = (searchValue: string) => {
-      console.log('use value', searchValue);
-      console.log('or use this.value', value.value);
+    const onSearch = async (searchValue: string) => {
+      const SearchBookInfo = await SearchBook(searchValue);
     };
 
     return {
       value,
       onSearch,
+      SearchBookInfo
     };
   },
 });

@@ -41,3 +41,15 @@ export async function BookDetail(BookId: String) {
     console.log(e)
   })
 }
+
+export async function SearchBook(BookName: String) {
+  return XRequest({
+    url: `${API.SearchBook}?keyword=${BookName}`,
+    method: 'get',
+  }).then(async (data) => {
+    return Promise.resolve(data.data)
+  }).catch(e => {
+    console.log('报错了')
+    console.log(e)
+  })
+}
