@@ -86,7 +86,7 @@ export default defineComponent({
 .row {
   margin: 30px 0 0 !important;
 }
-.gutter {
+.gutter-row {
   text-align: center;
 }
 </style>

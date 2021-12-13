@@ -79,7 +79,7 @@ export default defineComponent({
 
     // 注册逻辑
     const registInline = reactive({
-      username: "",
+      loginName: "",
       password: "",
     });
     const setRegist = async (e: any) => {

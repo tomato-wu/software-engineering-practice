@@ -24,4 +24,3 @@ export interface RequestParam<D = any> {
   headers?: AxiosRequestHeaders
   options?: RequestOptions
 }
-

@@ -33,7 +33,7 @@ export async function useLogin(params: LoginParams) {
  */
 
 export function useRegist(params: RegistParams) {
-  XRequest({ url: `${API.REGIST}?loginName=${params.username}&password=${params.password}`, method: 'post' }).then(res => {
+  XRequest({ url: `${API.REGIST}?loginName=${params.loginName}&password=${params.password}`, method: 'post' }).then(res => {
     if (res.code === 200) {
       message.success("注册成功")
     }
