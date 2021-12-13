@@ -3,5 +3,5 @@ export const HEADERS = {
   FORM: 'application/x-www-form-urlencoded',
   FILE: 'multipart/form-data',
   XML: 'text/xml',
-  IMAGE: 'image/jpeg'
+  Image: 'image/jpeg'
 }

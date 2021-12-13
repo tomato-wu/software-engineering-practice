@@ -27,7 +27,9 @@ export default defineComponent({
       default: "",
     },
   },
-  setup() {},
+  setup() {
+    return {};
+  },
 });
 </script>
 

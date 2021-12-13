@@ -1,9 +1,12 @@
 export interface LoginParams {
   loginName: string,
-  password: string
+  password: string,
+  code: string
 }
 
-export interface RegistParams extends LoginParams{
+export interface RegistParams {
+  loginName: string,
+  password: string,
   newPass?: string
 }
 
