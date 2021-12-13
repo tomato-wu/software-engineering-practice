@@ -11,14 +11,18 @@
             <!-- 账号 -->
             <input v-model="loginInline.loginName" type="text" placeholder="Username" />
             <!-- 密码 -->
-            <input v-model="loginInline.password" type="password" placeholder="Password" />
+            <input
+              v-model="loginInline.password"
+              type="password"
+              placeholder="Password"
+            />
             <!-- 验证码 -->
             <a-row>
               <a-col :span="15">
                 <input v-model="loginInline.code" type="text" placeholder="Captcha" />
               </a-col>
               <a-col :span="5">
-                <img :src="state.Captcha" alt="无法显示" style="margin: 9px;" />
+                <img :src="state.Captcha" alt="无法显示" style="margin: 9px" />
               </a-col>
             </a-row>
             <input @click="setLogin($event)" type="submit" value="Login" />
@@ -34,7 +38,11 @@
           <form>
             <h2>Create an Account</h2>
             <input v-model="registInline.loginName" type="text" placeholder="Username" />
-            <input v-model="registInline.password" type="email" placeholder="Create Password" />
+            <input
+              v-model="registInline.password"
+              type="email"
+              placeholder="Create Password"
+            />
             <input type="password" placeholder="Confirm Password" />
             <input type="password" placeholder="name" />
             <input @click="setRegist($event)" type="submit" value="Sign up" />
@@ -54,7 +62,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, reactive, ref } from "vue";
-import { GetCaptcha, useLogin, useRegist } from "../controllers/login";
+import { GetCaptcha, useLogin, useRegist, useGetCaptcha } from "../controllers/login";
 import { Menu, Row, Col, Pagination } from "ant-design-vue";
 
 export default defineComponent({
@@ -65,13 +73,13 @@ export default defineComponent({
   setup() {
     const state = reactive({
       isActive: false,
-      Captcha: ''
+      Captcha: "",
     });
 
     const loginInline = reactive({
       loginName: "admin",
       password: "123",
-      code: ''
+      code: "",
     });
 
     function goRegister() {
@@ -83,8 +91,13 @@ export default defineComponent({
     }
 
     onMounted(async () => {
-      state.Captcha = 'http://192.168.131.125:8080/captcha';
-    })
+      const res = await useGetCaptcha();
+      const base64 = btoa(
+        new Uint8Array(res).reduce((data, byte) => data + String.fromCharCode(byte), "")
+      );
+      console.log("data:image/jpeg;base64," + base64);
+      state.Captcha = "data:image/jpeg;base64," + base64;
+    });
 
     // 登录逻辑
     const setLogin = async (e: any) => {
@@ -122,7 +135,6 @@ export default defineComponent({
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-
 body {
   background-image: url(../assets/csdn.jpg);
 }

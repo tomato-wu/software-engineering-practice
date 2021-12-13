@@ -1,6 +1,8 @@
 <template>
   <a-menu v-model:selectedKeys="current" mode="horizontal" theme="dark">
-    <a-menu-item v-for="item in NavItem" :key="item.categoryId">{{ item.categoryName }}</a-menu-item>
+    <a-menu-item v-for="item in NavItem" :key="item.categoryId">{{
+      item.categoryName
+    }}</a-menu-item>
   </a-menu>
 
   <!-- 顶部搜索栏 -->
@@ -12,21 +14,24 @@
       <SearchBoxVue />
     </a-col>
   </a-row>
-
+  <img
+    src="http://img3.doubanio.com/view/subject/s/public/s29849366.jpg"
+    alt="无法正常显示"
+  />
   <!-- 图书项 -->
   <a-row :gutter="16" class="row">
     <a-col
       class="gutter-row margin-top-30"
       :span="4"
-      v-for="(item,index) in bookItem.records"
+      v-for="(item, index) in bookItem.records"
       :key="index"
     >
       <!--到时v-for拿数据渲染然后用 handleDetail跳转详情-->
       <BaseBookItemVue
         @click="handleDetail({ id: 1 })"
-        :bookName="item.bookName"
+        :book-name="item.bookName"
         :author="item.author"
-        :imgUrl="item.imgUrl"
+        :img-url="item.imgUrl"
       />
     </a-col>
   </a-row>
@@ -37,7 +42,7 @@
     <a-col :span="6">
       <a-pagination
         :total="85"
-        :show-total="total => `一共 ${total} 本图书`"
+        :show-total="(total) => `一共 ${total} 本图书`"
         :page-size="20"
         v-model:current="current1"
       />
@@ -60,7 +65,7 @@ export default defineComponent({
     "a-menu-item": Menu.Item,
     "a-row": Row,
     "a-col": Col,
-    'a-pagination': Pagination,
+    "a-pagination": Pagination,
     MailOutlined,
     AppstoreOutlined,
     SettingOutlined,
@@ -78,8 +83,7 @@ export default defineComponent({
       NavItem.value = await GetNavItem();
       bookItem.value = await BookItem(1);
       console.log(bookItem.value);
-
-    })
+    });
     const handleDetail = (item: any) => {
       console.log(item.id);
       router.push("/detail/" + item.id);
@@ -87,7 +91,7 @@ export default defineComponent({
 
     // 分页
     const onChange = (pageNumber: number) => {
-      console.log('Page: ', pageNumber);
+      console.log("Page: ", pageNumber);
     };
 
     return {

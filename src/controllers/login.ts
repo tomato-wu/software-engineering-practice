@@ -56,3 +56,15 @@ export function useRegist(params: RegistParams) {
 }
 
 
+/**
+ * 获取验证码图片
+ */
+
+ export function useGetCaptcha() {
+  return XRequest({
+    url: '/captcha',
+    headers: {
+      'Content-Type': 'image/jpeg'
+    }
+  })
+}

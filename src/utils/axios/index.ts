@@ -21,15 +21,17 @@ export function XRequest(properties: RequestParam) {
       // 配置mock的 url地址
     }
 
-    // get 请求可使用 param 提交
-    if (method === 'get') {
+    // 针对 image/jpeg进行处理
+    if (headers && headers['Content-Type'] === 'image/jpeg') {
+      http.defaults.responseType = 'arraybuffer'
       data = { params: param }
     }
 
-    // 文件上传post请求不需要 qs 格式化数据
-    else if (headers && headers['Content-Type'] === 'image/jpeg') {
+    // get 请求可使用 param 提交
+    else if (method === 'get') {
       data = { params: param }
     }
+
     // Content-Type: application/x-www-form-urlencoded (form表单) —— 需要 qs 格式化
     else if (method === 'post') {
       // post 请求使用 data 提交
