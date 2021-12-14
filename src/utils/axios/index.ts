@@ -22,7 +22,7 @@ export function XRequest(properties: RequestParam) {
     }
 
     // get 请求可使用 param 提交
-    else if (method === 'get') {
+    if (method === 'get') {
       data = { params: param }
     }
 
