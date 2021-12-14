@@ -1,5 +1,6 @@
 import type { AxiosInstance, AxiosRequestConfig } from 'axios'
 import axios from 'axios'
+import { API } from '../../enum/api'
 
 export const http: AxiosInstance = axios.create({
   // 代理服务在打包后就不存在了 => 可以通过执行服务器地址来解决跨域问题
@@ -13,10 +14,14 @@ export const http: AxiosInstance = axios.create({
     // 默认以form-data的形式传递数据给后台
     'Content-Type': 'application/json',
     // Accept: 'application/json'
-  }
+  },
+  withCredentials: true
 })
 
 // 请求拦截配置
 http.interceptors.request.use((config: AxiosRequestConfig) => {
+  if (config.url === API.Captcha)
+    config.responseType = 'arraybuffer'
   return config
 })
+
