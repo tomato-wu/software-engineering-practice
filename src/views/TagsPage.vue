@@ -9,50 +9,23 @@
     </a-col>
   </a-row>
 
-  <div class="tagBoxStyle">
-    <TitleBar title="文学" class="titleStyle"></TitleBar>
-    <div>
-      <a-tag color="pink">pink</a-tag>
-      <a-tag color="red">red</a-tag>
-      <a-tag color="orange">orange</a-tag>
-      <a-tag color="green">green</a-tag>
-      <a-tag color="cyan">cyan</a-tag>
-      <a-tag color="blue">blue</a-tag>
-      <a-tag color="purple">purple</a-tag>
-    </div>
-    <div>
-      <a-tag color="#f50">#f50</a-tag>
-      <a-tag color="#2db7f5">#2db7f5</a-tag>
-      <a-tag color="#87d068">#87d068</a-tag>
-      <a-tag color="#108ee9">#108ee9</a-tag>
-    </div>
-  </div>
+  <div class="tagBoxStyle" v-for="(item,index) in categories" :key="index">
+    <!-- 标签分类 -->
+    <TitleBar :title="item.categoryName" class="titleStyle"></TitleBar>
 
-  <div class="tagBoxStyle">
-    <TitleBar title="科学" class="titleStyle"></TitleBar>
-    <div>
-      <a-tag color="pink">pink</a-tag>
-      <a-tag color="red">red</a-tag>
-      <a-tag color="orange">orange</a-tag>
-      <a-tag color="green">green</a-tag>
-      <a-tag color="cyan">cyan</a-tag>
-      <a-tag color="blue">blue</a-tag>
-      <a-tag color="purple">purple</a-tag>
-    </div>
-    <div>
-      <a-tag color="#f50">#f50</a-tag>
-      <a-tag color="#2db7f5">#2db7f5</a-tag>
-      <a-tag color="#87d068">#87d068</a-tag>
-      <a-tag color="#108ee9">#108ee9</a-tag>
+    <!-- 具体标签 -->
+    <div v-for="(Subitem,Subindex) in item.secondLevelBookCategoryList" :key="Subindex">
+      <a-tag color="blue">{{ Subitem.categoryName }}</a-tag>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import { Button, Row, Col, Tag } from "ant-design-vue";
 import TitleBar from '../components/TitleBar.vue'
 import SearchBoxVue from "../components/SearchBox.vue";
+import { GetTagsItem } from "../controllers/tags";
 
 
 export default defineComponent({
@@ -64,7 +37,18 @@ export default defineComponent({
     TitleBar,
     SearchBoxVue
   },
-  setup() { },
+  setup() {
+
+    const categories = ref([]) as any
+
+    onMounted(async () => {
+      categories.value = await GetTagsItem()
+    })
+
+    return {
+      categories
+    }
+  },
 });
 </script>
 
@@ -82,3 +66,11 @@ export default defineComponent({
   padding: 30px;
 }
 </style>
+
+function GetTagsItem(): any {
+  throw new Error("Function not implemented.");
+}
+
+function GetTagsItem(): any {
+  throw new Error("Function not implemented.");
+}
