@@ -11,6 +11,7 @@
   <!-- 下边的图书项 -->
   <a-row v-for="(item,index) in SearchResult" :key="index">
     <SearchBookItem
+      @click="handleDetail(item.id)"
       :bookName="item.bookName"
       :author="item.author"
       :publishingHouse="item.publishingHouse"
@@ -23,13 +24,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from "vue";
+import { defineComponent, onBeforeMount, onMounted, onUpdated, ref } from "vue";
 import { Button, Row, Col, Tag } from "ant-design-vue";
 import TitleBar from '../components/TitleBar.vue'
 import SearchBoxVue from "../components/SearchBox.vue";
 import { useRoute } from "vue-router";
 import { SearchBook } from "../controllers/homepage";
 import SearchBookItem from '../components/SearchBookItem.vue'
+import router from "../router";
 
 export default defineComponent({
   components: {
@@ -46,13 +48,18 @@ export default defineComponent({
     const route = useRoute()
     const keyword = route.params.keyword as string
     const SearchResult = ref([]) as any
-    onMounted(async () => {
+    onBeforeMount(async () => {
       SearchResult.value = await SearchBook(keyword)
       console.log(SearchResult.value);
 
     })
+    const handleDetail = (item: any) => {
+      console.log(item);
+      router.push("/detail/" + item);
+    };
 
     return {
+      handleDetail,
       SearchResult
     }
   },

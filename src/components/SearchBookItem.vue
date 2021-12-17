@@ -56,6 +56,7 @@ export default defineComponent({
   flex-direction: row;
   margin-left: 20vw;
   margin-top: 30px;
+  cursor: pointer;
 }
 .book-item__img {
   width: 130px;
