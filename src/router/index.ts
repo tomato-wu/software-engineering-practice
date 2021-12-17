@@ -4,7 +4,8 @@ const routes = [
   { path: '/', component: () => import('../views/Login.vue') },
   { path: '/homePage', component: () => import('../views/HomePage.vue') },
   { path: '/tagsPage', component: () => import('../views/TagsPage.vue') },
-  { path: '/detail/:id', component: () => import('../views/BookDetail.vue') }
+  { path: '/detail/:id', component: () => import('../views/BookDetail.vue') },
+  { path: '/search-detail/:keyword', component: () => import('../views/SearchBookDetail.vue') }
 
 ]
 

@@ -12,6 +12,7 @@
 import { defineComponent, ref } from 'vue';
 import { Input } from 'ant-design-vue'
 import { SearchBook } from '../controllers/homepage';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   name: "SearchBox",
@@ -21,16 +22,16 @@ export default defineComponent({
   },
   setup() {
     const value = ref<string>('');
-    const SearchBookInfo = ref([]) as any;
+    const router = useRouter();
 
-    const onSearch = async (searchValue: string) => {
-      const SearchBookInfo = await SearchBook(searchValue);
+    const onSearch = async (keyword: string) => {
+      console.log(keyword);
+      router.push("/search-detail/" + keyword);
     };
 
     return {
       value,
       onSearch,
-      SearchBookInfo
     };
   },
 });

@@ -11,7 +11,7 @@ import qs from 'qs'
  * @param {param} 请求传递参数
  * @param {option} 附加配置
  */
-export function XRequest(properties: RequestParam) {
+export function XRequest(properties: RequestParam) {  
   let data: { params?: any; data?: any; }
   const { url, method = 'get', param, headers, options } = properties
   // const CONTENT_TYPE = headers!['Content-Type']
