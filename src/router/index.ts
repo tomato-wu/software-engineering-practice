@@ -5,8 +5,13 @@ const routes = [
   { path: '/homePage', component: () => import('../views/HomePage.vue') },
   { path: '/tagsPage', component: () => import('../views/TagsPage.vue') },
   { path: '/detail/:id', component: () => import('../views/BookDetail.vue') },
+<<<<<<< HEAD
   { path: '/search-detail/:keyword', component: () => import('../views/SearchBookDetail.vue') },
   { path: '/nav-detail/:typeid', component: () => import('../views/NavTabDetail.vue') }
+=======
+  { path: '/404', component: () => import('../components/404.vue') },
+  { path: '/search-detail/:keyword', component: () => import('../views/SearchBookDetail.vue') }
+>>>>>>> 88f47f6ec7249caf394df4bd19ed42b21b0a1a47
 
 ]
 

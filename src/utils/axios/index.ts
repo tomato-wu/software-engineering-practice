@@ -2,7 +2,6 @@
 import { AxiosError, AxiosRequestHeaders, AxiosResponse } from "axios";
 import { http } from "./axios";
 import { IResponse, RequestParam } from "./types";
-import qs from 'qs'
 
 /**
  * 核心函数，可通过它处理一切请求数据 并做横向扩展
@@ -21,14 +20,16 @@ export function XRequest(properties: RequestParam) {
       // 配置mock的 url地址
     }
 
-    // get 请求可使用 param 提交
+    if(options?.isToken) {
+      // 配置 token(localStorage存储 login的 token)
+      http.defaults.headers['common']['Authorization'] = localStorage.getItem('token') || 'TOKEN'
+    }
+
     if (method === 'get') {
       data = { params: param }
     }
-
-    // Content-Type: application/x-www-form-urlencoded (form表单) —— 需要 qs 格式化
+    
     else if (method === 'post') {
-      // post 请求使用 data 提交
       data = { data: JSON.stringify(param) }
     }
 
@@ -36,8 +37,9 @@ export function XRequest(properties: RequestParam) {
     http({
       url,
       method,
-      ...data
+      ...data,
     }).then((response: AxiosResponse) => {
+      console.log(response);
       // 可根据具体情况进行定制配置
       const res_data: IResponse = response.data
       if (res_data) {
