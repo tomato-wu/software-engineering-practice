@@ -5,7 +5,8 @@ const routes = [
   { path: '/homePage', component: () => import('../views/HomePage.vue') },
   { path: '/tagsPage', component: () => import('../views/TagsPage.vue') },
   { path: '/detail/:id', component: () => import('../views/BookDetail.vue') },
-  { path: '/search-detail/:keyword', component: () => import('../views/SearchBookDetail.vue') }
+  { path: '/search-detail/:keyword', component: () => import('../views/SearchBookDetail.vue') },
+  { path: '/nav-detail/:typeid', component: () => import('../views/NavTabDetail.vue') }
 
 ]
 

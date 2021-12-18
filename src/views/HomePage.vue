@@ -1,6 +1,10 @@
 <template>
   <a-menu v-model:selectedKeys="current" mode="horizontal" theme="dark">
-    <a-menu-item v-for="item in NavItem" :key="item.categoryId">
+    <a-menu-item
+      v-for="item in NavItem"
+      :key="item.categoryId"
+      @click="GetNavTagDetail(item.categoryId)"
+    >
       {{
         item.categoryName
       }}
@@ -84,8 +88,11 @@ export default defineComponent({
       console.log(bookItem.value);
     });
     const handleDetail = (item: any) => {
-      console.log(item);
       router.push("/detail/" + item);
+    };
+    const GetNavTagDetail = (item: any) => {
+
+      router.push("/nav-detail/" + item);
     };
 
     // 分页
@@ -100,6 +107,7 @@ export default defineComponent({
       current1,
       bookItem,
       onChange,
+      GetNavTagDetail
     };
   },
 });

@@ -44,7 +44,6 @@
           </div>
 
           <!--书评信息-->
-
           <div class="book__detail__comment">
             <span>标签：</span>
             <a-tag color="blue" v-for="(item,index) in bookDetail.label" :key="index">{{ item }}</a-tag>

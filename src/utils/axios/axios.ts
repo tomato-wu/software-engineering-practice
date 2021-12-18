@@ -20,8 +20,14 @@ export const http: AxiosInstance = axios.create({
 
 // 请求拦截配置(针对当前项目一般是 application/json)
 http.interceptors.request.use((config: AxiosRequestConfig) => {
-  if (config.url === API.Captcha)
+  // 验证码的
+  if (config.url === API.Captcha) {
     config.responseType = 'arraybuffer'
+  }
+  // 当不是登录接口时在其他接口加上token
+  // if (!config.url?.includes(API.LOGIN) && window.localStorage.getItem('token')) {
+  //   config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
+  // }
   return config
 })
 

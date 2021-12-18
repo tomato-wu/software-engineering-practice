@@ -25,6 +25,7 @@ export default defineComponent({
     const router = useRouter();
 
     const onSearch = async (keyword: string) => {
+
       router.push("/search-detail/" + keyword);
     };
 
