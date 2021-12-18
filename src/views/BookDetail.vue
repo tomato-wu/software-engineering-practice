@@ -44,10 +44,12 @@
           </div>
 
           <!--书评信息-->
+
           <div class="book__detail__comment">
             <span>标签：</span>
-            <span>{{ bookDetail.label }}</span>
+            <a-tag color="blue" v-for="(item,index) in bookDetail.label" :key="index">{{ item }}</a-tag>
           </div>
+
           <a-button type="primary" danger class="BuyBtnStyle">购买</a-button>
           <a-button type="primary" class="AddCarStyle">添加购物车</a-button>
         </div>
@@ -75,7 +77,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
-import { Button, Row, Col } from "ant-design-vue";
+import { Button, Row, Col, Tag } from "ant-design-vue";
 import { useRoute } from "vue-router";
 import { BookDetail, GetComments } from "../controllers/homepage";
 import Comments from "../components/Comments.vue"
@@ -87,6 +89,7 @@ export default defineComponent({
     "a-button": Button,
     "a-row": Row,
     "a-col": Col,
+    'a-tag': Tag,
     Comments,
     TitleBar
   },
@@ -131,6 +134,8 @@ export default defineComponent({
 .book__detail__comment {
   margin-top: 30px;
   text-align: start;
+  display: flex;
+  flex-direction: row;
 }
 
 .hr-line {
