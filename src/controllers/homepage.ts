@@ -19,7 +19,7 @@ export async function GetNavItem() {
   })
 }
 // 点击导航栏具体项获取数据
-export async function GetNavDetail(typeId: Number) {
+export async function GetNavDetail(typeId: String) {
   return XRequest({
     url: `${API.NAV_DETAIL}?typeId=${typeId}`,
     method: 'get',

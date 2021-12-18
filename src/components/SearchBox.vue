@@ -26,7 +26,8 @@ export default defineComponent({
 
     const onSearch = async (keyword: string) => {
 
-      router.push("/search-detail/" + keyword);
+      await router.push("/search-detail/" + keyword);
+      location.reload();
     };
 
     return {
