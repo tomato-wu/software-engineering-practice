@@ -39,6 +39,7 @@ export default defineComponent({
   box-sizing: border-box;
   width: 150px;
   height: 200px;
+  margin-bottom: 30px;
   cursor: pointer;
 }
 .book-item__detail {

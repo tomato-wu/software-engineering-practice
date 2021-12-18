@@ -45,6 +45,19 @@ export async function BookDetail(BookId: String) {
   })
 }
 
+// 获取评论详情
+export async function GetComments(BookId: String) {
+  return XRequest({
+    url: `${API.Comments}/${BookId}`,
+    method: 'get',
+  }).then(async (data) => {
+    return Promise.resolve(data.data)
+  }).catch(e => {
+    console.log('报错了')
+    console.log(e)
+  })
+}
+
 // 搜索书本
 export async function SearchBook(BookName: String) {
   return XRequest({
