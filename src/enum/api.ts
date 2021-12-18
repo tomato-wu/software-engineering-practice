@@ -9,6 +9,8 @@ export enum API {
   NAV = '/index/nav',
   BOOKITEM = '/index/carouse',
   BookDetail = '/book/detail',
-  SearchBook = '/book/search'
+  Comments = '/comment',
+  SearchBook = '/book/search',
+  categories = '/book/categories'
 
 }

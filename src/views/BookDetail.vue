@@ -44,10 +44,12 @@
           </div>
 
           <!--书评信息-->
+
           <div class="book__detail__comment">
             <span>标签：</span>
-            <span>{{ bookDetail.label }}</span>
+            <a-tag color="blue" v-for="(item,index) in bookDetail.label" :key="index">{{ item }}</a-tag>
           </div>
+
           <a-button type="primary" danger class="BuyBtnStyle">购买</a-button>
           <a-button type="primary" class="AddCarStyle">添加购物车</a-button>
         </div>
@@ -56,40 +58,54 @@
     <hr class="hr-line" />
     <!-- 作者简介： -->
     <div class="book__aurthor">
-      <span class="mg-bottom">作者简介:</span>
+      <TitleBar title="作者简介"></TitleBar>
       <span>{{ bookDetail.authorIntroduction }}</span>
     </div>
     <!-- 内容简介： -->
     <div class="book__aurthor">
-      <span class="mg-bottom">内容简介:</span>
+      <TitleBar title="内容简介"></TitleBar>
       <span>{{ bookDetail.catalog }}</span>
+    </div>
+    <hr class="hr-line" />
+    <!-- 评论 -->
+    <TitleBar title="用户评论"></TitleBar>
+    <div v-for="(item,index) in UserComments" :key="index">
+      <Comments :username="item.username" :time="item.time" :comment="item.comment"></Comments>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
-import { Button, Row, Col } from "ant-design-vue";
+import { Button, Row, Col, Tag } from "ant-design-vue";
 import { useRoute } from "vue-router";
-import { BookDetail } from "../controllers/homepage";
+import { BookDetail, GetComments } from "../controllers/homepage";
+import Comments from "../components/Comments.vue"
+import TitleBar from '../components/TitleBar.vue'
 
 export default defineComponent({
+  name: "BookDetail",
   components: {
     "a-button": Button,
     "a-row": Row,
     "a-col": Col,
+    'a-tag': Tag,
+    Comments,
+    TitleBar
   },
   setup() {
     const route = useRoute()
     const BookId = route.params.id as string
     const bookDetail = ref({}) as any
+    const UserComments = ref([]) as any
     onMounted(async () => {
       bookDetail.value = await BookDetail(BookId);
-      console.log(bookDetail.value);
+      UserComments.value = await GetComments(BookId);
 
     })
     return {
-      bookDetail
+      bookDetail,
+      UserComments
     }
   },
 });
@@ -118,6 +134,8 @@ export default defineComponent({
 .book__detail__comment {
   margin-top: 30px;
   text-align: start;
+  display: flex;
+  flex-direction: row;
 }
 
 .hr-line {
@@ -131,9 +149,6 @@ export default defineComponent({
   margin-top: 30px;
 }
 
-.mg-bottom {
-  margin: 0 0 30px;
-}
 .BuyBtnStyle {
   margin: 30px;
   width: 150px;
