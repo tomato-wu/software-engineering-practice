@@ -22,11 +22,13 @@ export default defineComponent({
   },
   setup() {
     const route = useRoute()
-    const typeId = route.params.typeid as string
+    const typeId = route.params.typeid as any
     const NavDetail = ref([]) as any
     onMounted(async () => {
 
       NavDetail.value = await GetNavDetail(typeId)
+      console.log(NavDetail.value);
+
 
     })
 
