@@ -14,11 +14,13 @@ export const http: AxiosInstance = axios.create({
     // 默认以form-data的形式传递数据给后台
     'Content-Type': 'application/json',
     // Accept: 'application/json'
-  }
+  },
+  withCredentials: true
 })
 
 // 请求拦截配置(针对当前项目一般是 application/json)
 http.interceptors.request.use((config: AxiosRequestConfig) => {
+  config.withCredentials = true
   if(config.url === API.Captcha)
     config.responseType = 'arraybuffer'
   return config

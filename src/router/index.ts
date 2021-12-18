@@ -4,7 +4,8 @@ const routes = [
   { path: '/', component: () => import('../views/Login.vue') },
   { path: '/homePage', component: () => import('../views/HomePage.vue') },
   { path: '/tagsPage', component: () => import('../views/TagsPage.vue') },
-  { path: '/detail/:id', component: () => import('../views/BookDetail.vue') }
+  { path: '/detail/:id', component: () => import('../views/BookDetail.vue') },
+  { path: '/404', component: () => import('../components/404.vue') }
 
 ]
 

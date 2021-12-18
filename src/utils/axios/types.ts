@@ -14,6 +14,7 @@ export interface IResponse {
 export interface RequestOptions {
   isMock?: boolean, // 是否开启 mock 服务
   loading?: boolean,
+  isToken?: boolean
 }
 
 // request 方法参数列表
