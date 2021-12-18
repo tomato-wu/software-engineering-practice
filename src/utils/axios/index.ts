@@ -22,7 +22,7 @@ export function XRequest(properties: RequestParam) {
 
     if (options?.isToken) {
       // 配置 token(localStorage存储 login的 token)
-      http.defaults.headers['common']['Authorization'] = localStorage.getItem('token') || 'TOKEN'
+      http.defaults.headers['common']['Authorization'] = `Bearer ${localStorage.getItem('token')}` || 'TOKEN'
     }
 
     if (method === 'get') {
