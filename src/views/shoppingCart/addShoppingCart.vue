@@ -1,5 +1,6 @@
 <template>
   <TitleBar title="我的购物车" class="titleStyle"></TitleBar>
+  <!-- 步骤条 -->
   <a-steps :current="1" class="StepStyle">
     <a-step>
       <!-- <span slot="title">Finished</span> -->
@@ -11,7 +12,17 @@
     <a-step title="In Progress" sub-title="Left 00:00:08" description="This is a description." />
     <a-step title="Waiting" description="This is a description." />
   </a-steps>
+  <!-- 付款项 -->
   <ShoppingCartItem></ShoppingCartItem>
+  <!-- 付款项 -->
+  <ShoppingCartItem></ShoppingCartItem>
+  <!-- 付款项 -->
+  <ShoppingCartItem></ShoppingCartItem>
+
+  <div class="payStyle">
+    <span class="totalStyle">总计：100000</span>
+    <a-button type="primary">结算</a-button>
+  </div>
 </template>
 
 <script lang="ts">
@@ -87,5 +98,13 @@ export default defineComponent({
 }
 .StepStyle {
   padding: 0 290px;
+}
+.payStyle {
+  position: absolute;
+  bottom: 2%;
+  right: 5%;
+}
+.totalStyle {
+  margin: 30px;
 }
 </style>
