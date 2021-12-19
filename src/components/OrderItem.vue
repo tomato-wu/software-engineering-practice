@@ -7,7 +7,7 @@
           <img src="../assets/user.png" alt="" />
         </div>
         <div class="card-content__detail">
-          <div class="card-content__name col">哈利波特</div>
+          <div class="card-content__name col">哈利·波特 （J.K.罗琳创作魔幻系列小说）</div>
           <div class="card-content__good col">
             <span class="price">￥25</span>
             <span class="number">× 2</span>
@@ -86,6 +86,10 @@ export default defineComponent({
   margin-right: 20px;
 }
 .col {
+  /*设置省略文本*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   margin: 20px 0;
 }
 
