@@ -40,11 +40,11 @@
             <input v-model="registInline.loginName" type="text" placeholder="Username" />
             <input
               v-model="registInline.password"
-              type="email"
+              type="password"
               placeholder="Create Password"
             />
-            <input type="password" placeholder="Confirm Password" />
-            <input type="password" placeholder="name" />
+            <!-- <input type="password" placeholder="Confirm Password" /> -->
+            <!-- <input type="password" placeholder="name" /> -->
             <input @click="setRegist($event)" type="submit" value="Sign up" />
             <p class="signup">
               Already have an account ?

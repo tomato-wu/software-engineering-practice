@@ -1,6 +1,7 @@
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import axios from 'axios'
 import { API } from '../../enum/api'
+import { useGo } from '../usePage'
 
 export const http: AxiosInstance = axios.create({
   // 代理服务在打包后就不存在了 => 可以通过执行服务器地址来解决跨域问题
@@ -28,5 +29,9 @@ http.interceptors.request.use((config: AxiosRequestConfig) => {
 
 // 响应拦截配置(针对当前项目存在一些不同的 responseType)
 http.interceptors.response.use((response: AxiosResponse) => {
+  console.log(response);
+  if(response.data.code.includes('4') || response.data.code.includes('5')) {//说明请求很可能出现问题
+    useGo()('/404')
+  }
   return response
 })

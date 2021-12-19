@@ -5,9 +5,10 @@ const routes = [
   { path: '/homePage', component: () => import('../views/HomePage.vue') },
   { path: '/tagsPage', component: () => import('../views/TagsPage.vue') },
   { path: '/detail/:id', component: () => import('../views/BookDetail.vue') },
+  { path: '/search-detail/:keyword', component: () => import('../views/SearchBookDetail.vue') },
+  { path: '/user-detail', component: () => import('../views/dropdown/UserDetail.vue') },
+  { path: '/order', component: () => import('../views/dropdown/Order.vue') },
   { path: '/404', component: () => import('../components/404.vue') },
-  { path: '/search-detail/:keyword', component: () => import('../views/SearchBookDetail.vue') }
-
 ]
 
 const router = createRouter({

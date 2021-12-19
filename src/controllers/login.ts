@@ -12,6 +12,8 @@ import { PageEnum } from "../enum/pageEnum"
  * @return void
  */
 
+const go = useGo()
+
 export async function useLogin(params: LoginParams) {
   XRequest({
     url: API.LOGIN,
@@ -19,12 +21,17 @@ export async function useLogin(params: LoginParams) {
     param: params
   }).then(res => {
     if (res.code === 200) {
+      localStorage.setItem('token', res.token)
       message.success("登录成功")
-      const go = useGo()
       go(PageEnum.HOMEPAGE)
     }
   })
 }
+
+/**
+ * 获取验证码接口 
+ * @return Promise
+ */
 
 export async function GetCaptcha() {
   return XRequest({
@@ -44,12 +51,17 @@ export async function GetCaptcha() {
 /**
  * 注册接口
  * @param {LoginParam} 注册参数(用户名，密码，新密码)
- * @return void
+ * @return Promise
  */
 
 export function useRegist(params: RegistParams) {
-  XRequest({ url: `${API.REGIST}?loginName=${params.loginName}&password=${params.password}`, method: 'post' }).then(res => {
+  XRequest({
+    url: API.REGIST,
+    method: 'post',
+    param: params
+  }).then(res => {
     if (res.code === 200) {
+      go('/')
       message.success("注册成功")
     }
   })
