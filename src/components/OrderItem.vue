@@ -1,59 +1,113 @@
 <template>
-  <div class="order-item">
-    <div class="order-item__image">
-      <img src="../assets/logo.png" alt="" />
-    </div>
-    <div class="order-item__detail">
-      <div class="order-item__col">
-        <p>书名</p>
-        <p>哈利波特</p>
+  <div>
+    <!--个人订单-->
+    <a-card>
+      <div class="card-content">
+        <div class="card-content__picture">
+          <img src="../assets/user.png" alt="" />
+        </div>
+        <div class="card-content__detail">
+          <div class="card-content__name col">哈利波特</div>
+          <div class="card-content__good col">
+            <span class="price">￥25</span>
+            <span class="number">× 2</span>
+          </div>
+        </div>
       </div>
-      <div class="order-item__col">
-        <p>作者</p>
-        <p>雷军</p>
+      <div class="card-deliver">
+        <div class="card-deliver__left">
+          <span>配送</span> <span class="tag">可选京准达</span>
+        </div>
+        <div class="card-deliver__right">
+          <span>京东快递（送货上门）</span>
+          <span>{{ new Date().toLocaleDateString() }}</span>
+        </div>
       </div>
-      <div class="order-item__col">
-        <p>价格</p>
-        <p>￥25</p>
-      </div>
-      <div class="order-item__col">
-        <p>简介</p>
-        <p>xxxxxxxxxxxx</p>
-      </div>
-    </div>
+    </a-card>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { computed, defineComponent } from "vue";
+import { Card } from "ant-design-vue";
 
 export default defineComponent({
+  components: {
+    "a-card": Card,
+  },
   setup() {},
 });
 </script>
 
 <style scoped>
-.order-item {
+/*容器设置 */
+.ant-card {
+  width: 40%;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgb(221, 216, 216);
+  margin-bottom: 50px;
+}
+.card-content {
   display: flex;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+/*左右宽度设置*/
+.card-content__picture {
+  width: 30%;
+}
+.card-content__detail {
+  width: 63%;
+}
+
+/*容器内容设置*/
+.card-content__picture img {
   width: 100%;
-  border-bottom: 0.5px solid rgb(202, 201, 201);
-  margin-left: 100px;
+  height: 180px;
 }
-.order-item__image {
-  width: 25%;
-}
-.order-item__image >>> img {
-  width: 60%;
-  height: 80%;
-}
-.order-item__detail {
-  width: 65%;
-}
-.order-item__col {
+
+.card-content__detail {
   display: flex;
-  margin-bottom: 20px;
+  flex-direction: column;
+  font-size: 20px;
+  margin-left: 50px;
 }
-.order-item__col p {
-  width: 100px;
+.card-content__name {
+  font-family: sans-serif;
+}
+.card-content__good {
+  display: flex;
+  justify-content: space-between;
+}
+.card-content__good .price {
+  color: red;
+  margin-right: 20px;
+}
+.col {
+  margin: 20px 0;
+}
+
+/*下方配送信息设置 */
+.card-deliver {
+  display: flex;
+  justify-content: space-between;
+}
+.card-deliver__left .tag {
+  display: inline-block;
+  box-sizing: border-box;
+  margin-left: 20px;
+  padding: 2px;
+  color: red;
+  border: rgb(240, 128, 128) 1px solid;
+  background-color: transparent;
+  border-radius: 5px;
+  font-weight: 5px;
+}
+
+.card-deliver__right {
+  display: flex;
+  flex-direction: column;
 }
 </style>
