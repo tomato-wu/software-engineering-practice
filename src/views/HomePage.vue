@@ -15,6 +15,9 @@
         <a-menu-item @click="handleUserDetail">
           <a href="javascript:;">个人信息</a>
         </a-menu-item>
+        <a-menu-item @click="handleUserOrder">
+          <a href="javascript:;">个人订单</a>
+        </a-menu-item>
         <a-menu-item @click="handleLogout">
           <a href="javascript:;">退出登录</a>
         </a-menu-item>
@@ -127,6 +130,11 @@ export default defineComponent({
       go("/user-detail");
     };
 
+    // 个人订单
+    const handleUserOrder = () => {
+      gp("/order");
+    };
+
     // 退出登录
     const handleLogout = async () => {
       const res = await XRequest({
@@ -144,6 +152,7 @@ export default defineComponent({
       onChange,
       handleUserDetail,
       handleLogout,
+      handleUserOrder,
     };
   },
 });
