@@ -6,9 +6,14 @@ import router from './router'
 import store from './store'
 
 import {
-  Button
+  Button,
+  Row,
+  Col
 } from 'ant-design-vue'
 
 import 'ant-design-vue/dist/antd.css'
 
-createApp(App).use(router).use(store).use(Button).mount('#app')
+const app = createApp(App);
+app.config.performance = true;
+
+app.use(router).use(store).use(Button).use(Row).use(Col).mount('#app')
