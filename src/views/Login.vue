@@ -11,11 +11,7 @@
             <!-- 账号 -->
             <input v-model="loginInline.loginName" type="text" placeholder="Username" />
             <!-- 密码 -->
-            <input
-              v-model="loginInline.password"
-              type="password"
-              placeholder="Password"
-            />
+            <input v-model="loginInline.password" type="password" placeholder="Password" />
             <!-- 验证码 -->
             <a-row>
               <a-col :span="15">
@@ -38,11 +34,7 @@
           <form>
             <h2>Create an Account</h2>
             <input v-model="registInline.loginName" type="text" placeholder="Username" />
-            <input
-              v-model="registInline.password"
-              type="password"
-              placeholder="Create Password"
-            />
+            <input v-model="registInline.password" type="password" placeholder="Create Password" />
             <!-- <input type="password" placeholder="Confirm Password" /> -->
             <!-- <input type="password" placeholder="name" /> -->
             <input @click="setRegist($event)" type="submit" value="Sign up" />
@@ -62,7 +54,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, reactive, ref } from "vue";
-import { GetCaptcha, useLogin, useRegist, useGetCaptcha } from "../controllers/login";
+import { useLogin, useRegist, useGetCaptcha } from "../controllers/login";
 import { Menu, Row, Col, Pagination } from "ant-design-vue";
 
 export default defineComponent({

@@ -4,15 +4,15 @@
       v-for="item in NavItem"
       :key="item.categoryId"
       @click="GetNavTagDetail(item.categoryId)"
-    >
-      {{ item.categoryName }}
-    </a-menu-item>
+    >{{ item.categoryName }}</a-menu-item>
   </a-menu>
 
   <!--个人信息/退出登录-->
   <a-dropdown class="dropdown">
     <a-avatar>
-      <template #icon><UserOutlined /></template>
+      <template #icon>
+        <UserOutlined />
+      </template>
     </a-avatar>
     <template #overlay>
       <a-menu>
@@ -138,7 +138,7 @@ export default defineComponent({
 
     // 个人订单
     const handleUserOrder = () => {
-      gp("/order");
+      go("/order");
     };
 
     // 退出登录
@@ -157,6 +157,9 @@ export default defineComponent({
       bookItem,
       onChange,
       GetNavTagDetail,
+      handleUserDetail,
+      handleUserOrder,
+      handleLogout
     };
   },
 });

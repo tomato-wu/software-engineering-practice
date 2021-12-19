@@ -12,6 +12,6 @@ export enum API {
   BookDetail = '/book/detail',
   Comments = '/comment',
   SearchBook = '/book/search',
-  categories = '/book/categories'
-
+  categories = '/book/categories',
+  CartItem = '/cartItem/book',
 }

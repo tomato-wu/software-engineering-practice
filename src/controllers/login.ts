@@ -27,29 +27,11 @@ export async function useLogin(params: LoginParams) {
       window.localStorage.setItem('token', res.data.token)
       const go = useGo()
       go(PageEnum.HOMEPAGE)
+    } else {
+      message.error("登录失败")
     }
   })
 }
-
-/**
- * 获取验证码接口 
- * @return Promise
- */
-
-export async function GetCaptcha() {
-  return XRequest({
-    url: API.Captcha,
-    method: 'get',
-  }).then(async (data) => {
-    console.log(data);
-
-    return Promise.resolve(data)
-  }).catch(e => {
-    console.log('报错了')
-    console.log(e)
-  })
-}
-
 
 /**
  * 注册接口

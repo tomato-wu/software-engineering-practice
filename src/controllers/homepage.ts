@@ -12,6 +12,9 @@ export async function GetNavItem() {
     url: API.NAV,
     method: 'get',
   }).then(async (data) => {
+    console.log(data);
+    console.log("哈哈哈哈");
+
     return Promise.resolve(data.data)
   }).catch(e => {
     console.log('报错了')

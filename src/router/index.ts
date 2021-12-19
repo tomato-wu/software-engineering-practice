@@ -10,7 +10,8 @@ const routes = [
   { path: '/order', component: () => import('../views/dropdown/Order.vue') },
   { path: '/404', component: () => import('../components/404.vue') },
   { path: '/search-detail/:keyword', component: () => import('../views/SearchBookDetail.vue') },
-  { path: '/nav-detail/:typeId', component: () => import('../views/NavTabDetail.vue') }
+  { path: '/nav-detail/:typeId', component: () => import('../views/NavTabDetail.vue') },
+  { path: '/shopping-cart/:BookId', component: () => import('../views/shoppingCart/addShoppingCart.vue') }
 
 ]
 

@@ -17,7 +17,7 @@
       :publishingHouse="item.publishingHouse"
       :originalPrice="item.originalPrice"
       :yearOfPublication="item.yearOfPublication"
-      :label="item.label.toString()"
+      :label="item.label"
       :imgUrl="item.imgUrl"
     />
   </a-row>

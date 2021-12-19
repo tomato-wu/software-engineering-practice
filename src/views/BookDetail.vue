@@ -30,7 +30,7 @@
           <!--定价  -->
           <div class="book__detail__line">
             <span>定价:</span>
-            <span>{{ bookDetail.originalPrice }}</span>
+            <span style="color:red;">￥{{ bookDetail.originalPrice }}</span>
           </div>
           <!-- 简介： -->
           <div class="book__detail__line">
@@ -50,7 +50,7 @@
           </div>
 
           <a-button type="primary" danger class="BuyBtnStyle">购买</a-button>
-          <a-button type="primary" class="AddCarStyle">添加购物车</a-button>
+          <a-button type="primary" class="AddCarStyle" @click="addShoppingCart(BookId)">添加购物车</a-button>
         </div>
       </a-col>
     </a-row>
@@ -81,6 +81,7 @@ import { useRoute } from "vue-router";
 import { BookDetail, GetComments } from "../controllers/homepage";
 import Comments from "../components/Comments.vue"
 import TitleBar from '../components/TitleBar.vue'
+import router from "../router";
 
 export default defineComponent({
   name: "BookDetail",
@@ -102,9 +103,14 @@ export default defineComponent({
       UserComments.value = await GetComments(BookId);
 
     })
+    const addShoppingCart = async (BookId: string) => {
+      router.push("/shopping-cart/" + BookId);
+    }
     return {
       bookDetail,
-      UserComments
+      UserComments,
+      addShoppingCart,
+      BookId
     }
   },
 });
