@@ -18,6 +18,18 @@ export async function GetNavItem() {
     console.log(e)
   })
 }
+// 点击导航栏具体项获取数据
+export async function GetNavDetail(typeId: String) {
+  return XRequest({
+    url: `${API.NAV_DETAIL}?typeId=${typeId}`,
+    method: 'get',
+  }).then(async (data) => {
+    return Promise.resolve(data.data)
+  }).catch(e => {
+    console.log('报错了')
+    console.log(e)
+  })
+}
 
 // 获取每书本
 export async function BookItem(pageNum: number) {

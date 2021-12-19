@@ -10,7 +10,7 @@ import { IResponse, RequestParam } from "./types";
  * @param {param} 请求传递参数
  * @param {option} 附加配置
  */
-export function XRequest(properties: RequestParam) {  
+export function XRequest(properties: RequestParam) {
   let data: { params?: any; data?: any; }
   const { url, method = 'get', param, headers, options } = properties
   // const CONTENT_TYPE = headers!['Content-Type']
@@ -20,15 +20,15 @@ export function XRequest(properties: RequestParam) {
       // 配置mock的 url地址
     }
 
-    if(options?.isToken) {
+    if (options?.isToken) {
       // 配置 token(localStorage存储 login的 token)
-      http.defaults.headers['common']['Authorization'] = 'Bearer ' + localStorage.getItem('token') || ''
+      http.defaults.headers['common']['Authorization'] = `Bearer ${localStorage.getItem('token')}` || 'TOKEN'
     }
 
     if (method === 'get') {
       data = { params: param }
     }
-    
+
     else if (method === 'post') {
       data = { data: JSON.stringify(param) }
     }

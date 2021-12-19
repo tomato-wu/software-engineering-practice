@@ -12,10 +12,13 @@
   <div class="tagBoxStyle" v-for="(item,index) in categories" :key="index">
     <!-- 标签分类 -->
     <TitleBar :title="item.categoryName" class="titleStyle"></TitleBar>
-
     <!-- 具体标签 -->
-    <div v-for="(Subitem,Subindex) in item.secondLevelBookCategoryList" :key="Subindex">
-      <a-tag color="blue">{{ Subitem.categoryName }}</a-tag>
+    <div>
+      <a-tag
+        color="blue"
+        v-for="(Subitem,Subindex) in item.secondLevelBookCategoryList"
+        :key="Subindex"
+      >{{ Subitem.categoryName }}</a-tag>
     </div>
   </div>
 </template>

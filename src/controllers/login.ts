@@ -23,6 +23,9 @@ export async function useLogin(params: LoginParams) {
     if (res.code === 200) {
       localStorage.setItem('token', res.token)
       message.success("登录成功")
+      // 存储token
+      window.localStorage.setItem('token', res.data.token)
+      const go = useGo()
       go(PageEnum.HOMEPAGE)
     }
   })
@@ -72,7 +75,7 @@ export function useRegist(params: RegistParams) {
  * 获取验证码图片
  */
 
- export function useGetCaptcha() {
+export function useGetCaptcha() {
   return XRequest({
     url: '/captcha',
     headers: {

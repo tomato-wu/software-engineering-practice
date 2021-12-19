@@ -4,16 +4,21 @@
     <div class="introduction">
       <h2>{{ bookName }}</h2>
       <p>{{ author }}/{{ publishingHouse }}/{{ yearOfPublication }}/{{ originalPrice }}</p>
-      <p>{{ label }}</p>
+      <div class="TagStyle">
+        <a-tag color="blue" v-for="(item,index) in label" :key="index">{{ item }}</a-tag>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-
+import { Tag } from "ant-design-vue";
 export default defineComponent({
   name: "SearchBookItem",
+  components: {
+    'a-tag': Tag,
+  },
   props: {
     bookName: {
       type: String,
@@ -36,8 +41,8 @@ export default defineComponent({
       default: "",
     },
     label: {
-      type: String,
-      default: "",
+      type: Array,
+      default: []
     },
     imgUrl: {
       type: String,
@@ -71,6 +76,9 @@ h2 {
   margin-left: 2vw;
 }
 p {
+  margin-left: 2vw;
+}
+.TagStyle {
   margin-left: 2vw;
 }
 </style>

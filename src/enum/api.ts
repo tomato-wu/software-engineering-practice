@@ -7,6 +7,7 @@ export enum API {
   USER_LOGOUT = '/user/logout',
   HOME_PAGE = '/homePage',
   NAV = '/index/nav',
+  NAV_DETAIL = '/book/certainType',
   BOOKITEM = '/index/carouse',
   BookDetail = '/book/detail',
   Comments = '/comment',
