@@ -4,7 +4,8 @@
       v-for="item in NavItem"
       :key="item.categoryId"
       @click="GetNavTagDetail(item.categoryId)"
-    >{{ item.categoryName }}</a-menu-item>
+      >{{ item.categoryName }}</a-menu-item
+    >
   </a-menu>
 
   <!--个人信息/退出登录-->
@@ -18,9 +19,6 @@
       <a-menu>
         <a-menu-item @click="handleUserDetail">
           <a href="javascript:;">个人信息</a>
-        </a-menu-item>
-        <a-menu-item @click="handleUserOrder">
-          <a href="javascript:;">购物车</a>
         </a-menu-item>
         <a-menu-item @click="handleLogout">
           <a href="javascript:;">退出登录</a>
@@ -138,11 +136,6 @@ export default defineComponent({
       go("/user-detail");
     };
 
-    // 个人订单
-    const handleUserOrder = () => {
-      go("/order");
-    };
-
     // 退出登录
     const handleLogout = async () => {
       const res = await XRequest({
@@ -164,7 +157,6 @@ export default defineComponent({
       onChange,
       GetNavTagDetail,
       handleUserDetail,
-      handleUserOrder,
       handleLogout,
     };
   },

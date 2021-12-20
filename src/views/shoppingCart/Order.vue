@@ -1,7 +1,11 @@
 <template>
   <TitleBarVue title="个人订单页面" class="TitleStyle"></TitleBarVue>
   <!--个人订单-->
-  <div class="order" v-for="(item,index) in bookBriefVOList.bookBriefVOList" :key="index">
+  <div
+    class="order"
+    v-for="(item, index) in bookBriefVOList.bookBriefVOList"
+    :key="index"
+  >
     <order-item
       :bookName="item.bookName"
       :bookCount="item.bookCount"
@@ -21,7 +25,6 @@
 import { defineComponent, onMounted, ref, toRefs, watch } from "vue";
 import { Checkbox, CheckboxGroup } from "ant-design-vue";
 import OrderItem from "../../components/OrderItem.vue";
-import BaseNav from "../../components/BaseNav.vue";
 import { useHandleOrder, useOrder } from "../../controllers/order";
 import { useRoute } from "vue-router";
 import { GetAllOrderDetail } from "../../controllers/cart";
@@ -40,26 +43,23 @@ export default defineComponent({
      * 点击确认购买后调用远程接口存入数据库
      * 进入用户订单详情时通过用户 id 获取订单列表
      */
-    const route = useRoute()
-    const orderId = route.params.orderId as any
-    const bookBriefVOList = ref([]) as any
+    const route = useRoute();
+    const orderId = route.params.orderId as any;
+    const bookBriefVOList = ref([]) as any;
 
     onMounted(async () => {
       console.log(orderId);
 
-
-      bookBriefVOList.value = await GetAllOrderDetail(orderId)
+      bookBriefVOList.value = await GetAllOrderDetail(orderId);
       console.log(bookBriefVOList.value);
-
-
-    })
+    });
 
     const { handleSubmit, handleCancle } = useHandleOrder();
 
     return {
       handleSubmit,
       handleCancle,
-      bookBriefVOList
+      bookBriefVOList,
     };
   },
 });

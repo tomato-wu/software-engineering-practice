@@ -25,7 +25,6 @@ import { defineComponent, onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import getDetail from "./UserDetailLook.vue";
 import updateDetail from "./UserDetailUpdate.vue";
-import BaseNav from "../../components/BaseNav.vue";
 import UserAddress from "./UserAddress.vue";
 import { useGo } from "../../utils/usePage";
 import TitleBar from '../../components/TitleBar.vue'
@@ -35,7 +34,6 @@ export default defineComponent({
     getDetail,
     updateDetail,
     "a-card": Card,
-    BaseNav,
     UserAddress,
     TitleBar
   },
