@@ -1,5 +1,4 @@
 <template>
-  <div @click="setBack" class="back">返回首页</div>
   <TitleBar title="基本信息" class="titleStyle"></TitleBar>
   <div class="user-detail">
     <!--基本信息区-->
@@ -17,11 +16,14 @@
       <user-address-delete v-else @handleCancle="handleAddressCancle"></user-address-delete>
     </div>
   </div>
+  <div @click="setBack" class="back">返回首页</div>
+  <LeftSquareTwoTone />
 </template>
 
 <script lang="ts">
 import { Card } from "ant-design-vue";
 import { defineComponent, onMounted, ref } from "vue";
+import { LeftSquareTwoTone } from '@ant-design/icons-vue';
 import { useRoute } from "vue-router";
 import getDetail from "./UserDetailLook.vue";
 import updateDetail from "./UserDetailUpdate.vue";
@@ -35,7 +37,8 @@ export default defineComponent({
     updateDetail,
     "a-card": Card,
     UserAddress,
-    TitleBar
+    TitleBar,
+    LeftSquareTwoTone
   },
   setup() {
     const route = useRoute();

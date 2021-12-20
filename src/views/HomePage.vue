@@ -1,18 +1,17 @@
 <template>
-  <a-menu v-model:selectedKeys="current" mode="horizontal" theme="dark">
+  <a-menu v-model:selectedKeys="current" mode="horizontal" theme="dark" class="MenuStyle">
     <a-menu-item
       v-for="item in NavItem"
       :key="item.categoryId"
       @click="GetNavTagDetail(item.categoryId)"
-      >{{ item.categoryName }}</a-menu-item
-    >
+    >{{ item.categoryName }}</a-menu-item>
   </a-menu>
 
   <!--个人信息/退出登录-->
   <a-dropdown class="dropdown">
-    <a-avatar>
+    <a-avatar style="background-color: #87d068" class="headStyle">
       <template #icon>
-        <UserOutlined />
+        <UserOutlined style="margin-top:12px" />
       </template>
     </a-avatar>
     <template #overlay>
@@ -164,6 +163,10 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.MenuStyle {
+  height: 60px;
+  line-height: 60px;
+}
 .margin-top-30 {
   margin-top: 30px;
 }
@@ -178,11 +181,15 @@ export default defineComponent({
   text-align: center;
 }
 .dropdown {
-  top: -39px;
+  top: -50px;
   right: 20px;
   float: right;
 }
 .dropdown::after {
   clear: left;
+}
+.headStyle {
+  width: 50px;
+  height: 50px;
 }
 </style>
