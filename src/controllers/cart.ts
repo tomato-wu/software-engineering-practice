@@ -1,19 +1,58 @@
 import { XRequest } from "../utils/axios"
-import { LoginParams, RegistParams } from "./models/user"
+import { LoginParams, RegistParams, updateCartParams } from "./models/user"
 import { API } from "../enum/api"
 import { message } from "ant-design-vue"
 // 页面跳转
 import { useGo } from "../utils/usePage"
 import { PageEnum } from "../enum/pageEnum"
 
-// 首页导航栏
+// 获取购物车列表
 export async function GetCartItem() {
   return XRequest({
     url: API.CartItem,
+    options: {
+      isToken: true
+    },
     method: 'get',
   }).then(async (data) => {
-    console.log(data);
     return Promise.resolve(data.data)
+  }).catch(e => {
+    console.log('报错了')
+    console.log(e)
+  })
+}
+
+// 删除购物车项
+export async function deleteCartItemFun(bookId: String) {
+  return XRequest({
+    url: `${API.DeleteCartItem}/${bookId}`,
+    options: {
+      isToken: true
+    },
+    method: 'DELETE',
+  }).then(async (data) => {
+    message.success("删除成功")
+    return Promise.resolve(data)
+  }).catch(e => {
+    console.log('报错了')
+    console.log(e)
+  })
+}
+
+// 修改购物车项
+export async function updateCountFun(params: updateCartParams) {
+  return XRequest({
+    url: API.DeleteCartItem,
+    options: {
+      isToken: true
+    },
+    method: 'PUT',
+    param: params
+  }).then(async (data) => {
+    message.success("修改成功")
+    console.log(data);
+
+    return Promise.resolve(data)
   }).catch(e => {
     console.log('报错了')
     console.log(e)

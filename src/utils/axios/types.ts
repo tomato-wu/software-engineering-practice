@@ -7,7 +7,7 @@ export type Method = 'get' | 'GET' | 'post' | 'POST' | 'put' | 'PUT' | 'DELETE' 
 export interface IResponse {
   code: string | number,
   data: any,
-  msg ?: string,
+  msg?: string,
 }
 
 // request options 相关的配置

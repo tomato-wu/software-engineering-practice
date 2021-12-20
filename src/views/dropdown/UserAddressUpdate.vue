@@ -39,13 +39,15 @@ import { XRequest } from "../../utils/axios";
 import { API } from "../../enum/api";
 
 /*假数据模拟*/
-const provinceData = ["Guangdong", "Zhejiang"];
+const provinceData = ["广东", "Guangdong", "Zhejiang"];
 const cityData = {
-  Guangdong: ["Guangzhou", "Dongguan", "Foshan"],
+  广东: ["广州", "Guangzhou", "Dongguan", "Foshan"],
+  Guangdong: ["广州", "Guangzhou", "Dongguan", "Foshan"],
   Zhejiang: ["Hangzhou", "Ningbo", "Wenzhou"],
 };
 const regionData = {
-  Guangzhou: ["Tianhe", "Panyu"],
+  广州: ["荔湾", "Tianhe", "Panyu"],
+  Guangzhou: ["荔湾", "Tianhe", "Panyu"],
   Dongguan: ["Nancheng", "Wancheng"],
   Foshan: ["Nanhai", "Chancheng"],
   Hangzhou: ["Shangcheng"],
@@ -60,23 +62,22 @@ export default defineComponent({
     "a-input": Input,
   },
   setup() {
-    // init data
-    onMounted(async () => {
-      const res = await XRequest({
-        url: API.ADDRESS,
-      });
-      Object.assign(state, res.data || {});
-    });
-
     const province = provinceData[0];
     const city = cityData[province][0];
     const state = reactive({
       provinceName: province,
       cityName: cityData[province][0],
       regionName: regionData[city][0],
-      detailAddress: "xxxx街xxxx路xxxx号xxxx小区",
+      detailAddress: "",
       userName: "jzy",
       userPhone: "13726779599",
+    });
+    // init data
+    onMounted(async () => {
+      const res = await XRequest({
+        url: API.ADDRESS,
+      });
+      Object.assign(state, res.data || {});
     });
     // 市
     const cities = computed(() => {
