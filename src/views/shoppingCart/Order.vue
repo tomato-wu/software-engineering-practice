@@ -1,11 +1,7 @@
 <template>
   <TitleBarVue title="个人订单页面" class="TitleStyle"></TitleBarVue>
   <!--个人订单-->
-  <div
-    class="order"
-    v-for="(item, index) in bookBriefVOList.bookBriefVOList"
-    :key="index"
-  >
+  <div class="order" v-for="(item, index) in bookBriefVOList.bookBriefVOList" :key="index">
     <order-item
       :bookName="item.bookName"
       :bookCount="item.bookCount"
