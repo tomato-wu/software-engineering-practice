@@ -16,7 +16,9 @@
   <div class="buy">
     总价：
     <span class="price">￥{{ bookBriefVOList.totalPrice }}</span>
-    <a-button type="primary" class="buy--submit" @click="handleSubmit(orderId)">确定</a-button>
+    <a-button type="primary" class="buy--submit" @click="handleSubmit(orderId)"
+      >确定</a-button
+    >
     <a-button class="buy--cancle" @click="handleCancle">返回</a-button>
   </div>
   <div v-html="PayString"></div>
@@ -27,7 +29,7 @@ import { defineComponent, onMounted, ref, toRefs, watch } from "vue";
 import { Checkbox, CheckboxGroup } from "ant-design-vue";
 import OrderItem from "../../components/OrderItem.vue";
 import { useHandleOrder, useOrder } from "../../controllers/order";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { GetAllOrderDetail } from "../../controllers/cart";
 import TitleBarVue from "../../components/TitleBar.vue";
 
@@ -45,20 +47,15 @@ export default defineComponent({
      * 进入用户订单详情时通过用户 id 获取订单列表
      */
     const route = useRoute();
+    const router = useRouter();
     const orderId = route.params.orderId as any;
     const bookBriefVOList = ref([]) as any;
 
     onMounted(async () => {
-<<<<<<< HEAD
-      bookBriefVOList.value = await GetAllOrderDetail(orderId)
-    })
-=======
       console.log(orderId);
-
-      bookBriefVOList.value = await GetAllOrderDetail(orderId);
+      bookBriefVOList.value = await GetAllOrderDetail(Number(orderId));
       console.log(bookBriefVOList.value);
     });
->>>>>>> 334eeadcc6bf82839a44ce0738f4f14ce911fee3
 
     const { handleSubmit, handleCancle, PayString } = useHandleOrder();
 
@@ -66,11 +63,8 @@ export default defineComponent({
       handleSubmit,
       handleCancle,
       bookBriefVOList,
-<<<<<<< HEAD
+      router,
       orderId,
-      PayString
-=======
->>>>>>> 334eeadcc6bf82839a44ce0738f4f14ce911fee3
     };
   },
 });

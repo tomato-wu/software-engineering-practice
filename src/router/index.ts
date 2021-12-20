@@ -12,7 +12,7 @@ const routes = [
   { path: '/nav-detail/:typeId', component: () => import('../views/NavTabDetail.vue') },
   { path: '/shopping-cart/:BookId', component: () => import('../views/shoppingCart/addShoppingCart.vue') },
   { path: '/order/:orderId', component: () => import('../views/shoppingCart/Order.vue') },
-  { path: '/orderAlipay', component: () => import('../views/shoppingCart/orderAlipay.vue') },
+  { path: '/orderAlipay', name:'OrderAlipay', component: () => import('../views/shoppingCart/orderAlipay.vue'), },
 
 
 ]

@@ -1,12 +1,10 @@
 import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { API } from '../enum/api';
-import router from '../router';
 import { XRequest } from '../utils/axios';
 /**
  * 订单
  */
-
 
 export function useOrder() {
   // 多选框参数
@@ -52,16 +50,15 @@ async function GetPayMent(orderId: Number) {
 }
 
 export function useHandleOrder() {
+  const router = useRouter()
   const PayString = ref('') as any
-
   // 提交订单
-  const handleSubmit = async (orderId: Number) => {
-    PayString.value = await GetPayMent(orderId)
+  const handleSubmit = async (orderId: number) => {
+    PayString.value =  await GetPayMent(orderId)
     console.log("haha");
     console.log(PayString.value);
-
-    const router = useRouter()
-    router.push({ path: '/orderAlipay', query: { htmlData: PayString.value } })
+    console.log(router);
+    router.push({path: '/orderAlipay', query: {htmlData: PayString.value}})
   }
 
   // 取消 => 返回上一页
