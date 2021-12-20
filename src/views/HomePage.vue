@@ -122,7 +122,7 @@ export default defineComponent({
     const handleDetail = (item: any) => {
       router.push("/detail/" + item);
     };
-    const GetNavTagDetail = (item: any) => {
+    const GetNavTagDetail = (item: Number) => {
       router.push("/nav-detail/" + item);
     };
 

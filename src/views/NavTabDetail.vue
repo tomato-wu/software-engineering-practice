@@ -22,20 +22,16 @@ export default defineComponent({
   },
   setup() {
     const route = useRoute()
-    const typeId = route.params.typeid as any
+    const typeId = route.params.typeId as any
     const NavDetail = ref([]) as any
     onMounted(async () => {
-
+      console.log("typeId是什么， ");
+      console.log(typeId);
       NavDetail.value = await GetNavDetail(typeId)
-      console.log(NavDetail.value);
-
-
     })
 
     return {
-
       NavDetail
-
     }
   },
 });

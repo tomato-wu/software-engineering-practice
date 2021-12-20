@@ -10,9 +10,11 @@ import { PageEnum } from "../enum/pageEnum"
 export async function GetCartItem() {
   return XRequest({
     url: API.CartItem,
+    options: {
+      isToken: true
+    },
     method: 'get',
   }).then(async (data) => {
-    console.log(data);
     return Promise.resolve(data.data)
   }).catch(e => {
     console.log('报错了')

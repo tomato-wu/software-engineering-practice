@@ -1,4 +1,5 @@
 <template>
+  <!-- 说明 -->
   <TitleBar title="我的购物车" class="titleStyle"></TitleBar>
   <!-- 步骤条 -->
   <a-steps :current="1" class="StepStyle">
@@ -12,12 +13,17 @@
     <a-step title="In Progress" sub-title="Left 00:00:08" description="This is a description." />
     <a-step title="Waiting" description="This is a description." />
   </a-steps>
-  <!-- 付款项 -->
-  <ShoppingCartItem></ShoppingCartItem>
-  <!-- 付款项 -->
-  <ShoppingCartItem></ShoppingCartItem>
-  <!-- 付款项 -->
-  <ShoppingCartItem></ShoppingCartItem>
+  <div v-for="(item,index) in cartItem" :key="index">
+    <!-- 付款项 -->
+    <ShoppingCartItem
+      :bookName="item.bookName"
+      :author="item.author"
+      :publishingHouse="item.publishingHouse"
+      :originalPrice="item.originalPrice"
+      :bookCount="item.bookCount"
+      :imgUrl="item.imgUrl"
+    ></ShoppingCartItem>
+  </div>
 
   <div class="payStyle">
     <span class="totalStyle">总计：100000</span>
@@ -51,29 +57,7 @@ export default defineComponent({
   setup() {
     const route = useRoute()
     const BookId = route.params.BookId as string
-    const cartItem = ref([])
-    const plainOptions = ['Apple', 'Pear', 'Orange'];
-
-
-    const state = reactive({
-      indeterminate: true,
-      checkAll: false,
-      checkedList: ['Apple', 'Orange'],
-    });
-    const onCheckAllChange = (e: any) => {
-      Object.assign(state, {
-        checkedList: e.target.checked ? plainOptions : [],
-        indeterminate: false,
-      });
-    };
-
-    watch(
-      () => state.checkedList,
-      val => {
-        state.indeterminate = !!val.length && val.length < plainOptions.length;
-        state.checkAll = val.length === plainOptions.length;
-      },
-    );
+    const cartItem = ref([]) as any
 
     onMounted(async () => {
       cartItem.value = await GetCartItem()
@@ -81,12 +65,7 @@ export default defineComponent({
     })
 
     return {
-
-      ...toRefs(state),
-      plainOptions,
-      onCheckAllChange,
-
-
+      cartItem
     }
   },
 });
