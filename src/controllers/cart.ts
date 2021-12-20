@@ -1,5 +1,5 @@
 import { XRequest } from "../utils/axios"
-import { LoginParams, RegistParams } from "./models/user"
+import { LoginParams, RegistParams, updateCartParams } from "./models/user"
 import { API } from "../enum/api"
 import { message } from "ant-design-vue"
 // 页面跳转
@@ -32,6 +32,26 @@ export async function deleteCartItemFun(bookId: String) {
     method: 'DELETE',
   }).then(async (data) => {
     message.success("删除成功")
+    return Promise.resolve(data)
+  }).catch(e => {
+    console.log('报错了')
+    console.log(e)
+  })
+}
+
+// 修改购物车项
+export async function updateCountFun(params: updateCartParams) {
+  return XRequest({
+    url: API.DeleteCartItem,
+    options: {
+      isToken: true
+    },
+    method: 'PUT',
+    param: params
+  }).then(async (data) => {
+    message.success("修改成功")
+    console.log(data);
+
     return Promise.resolve(data)
   }).catch(e => {
     console.log('报错了')

@@ -20,7 +20,13 @@
       <!-- 数量 -->
 
       <div class="amount">
-        <a-input-number id="inputNumber" :value="bookCount" :min="1" :max="10" />
+        <a-input-number
+          id="inputNumber"
+          v-model:value="value"
+          :min="1"
+          :max="10"
+          @change="updateCount(bookId, value)"
+        />
       </div>
     </a-col>
     <a-col :span="4" class="itemDetailStyle">
@@ -41,7 +47,7 @@ import { defineComponent, onMounted, ref } from 'vue';
 import { Input, Row, Col, InputNumber, Button } from 'ant-design-vue'
 import { SearchBook } from '../controllers/homepage';
 import { useRouter } from 'vue-router';
-import { deleteCartItemFun } from '../controllers/cart';
+import { deleteCartItemFun, updateCountFun } from '../controllers/cart';
 
 export default defineComponent({
   name: "SearchBox",
@@ -83,19 +89,31 @@ export default defineComponent({
     'a-input-number': InputNumber,
     'a-button': Button
   },
-  setup() {
+  setup(props) {
 
+    const value = ref<number>(3)
     onMounted(() => {
-
+      value.value = props.bookCount
     })
     const deleteCartItem = async (bookId: string) => {
       await deleteCartItemFun(bookId)
+      // 删除后页面刷新一下
       location.reload();
+    }
+    const updateCount = async (bookId: string, bookCount: Number) => {
+      console.log(bookId);
+      console.log(bookCount);
+      const params = {
+        bookId: bookId,
+        bookCount: bookCount
+      }
+      await updateCountFun(params)
     }
 
     return {
-      deleteCartItem
-
+      deleteCartItem,
+      value,
+      updateCount
     };
   },
 });
