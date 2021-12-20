@@ -18,7 +18,10 @@
     </a-col>
     <a-col :span="4" class="itemDetailStyle">
       <!-- 数量 -->
-      <div class="amount">{{ bookCount }}</div>
+
+      <div class="amount">
+        <a-input-number id="inputNumber" :value="bookCount" :min="1" :max="10" />
+      </div>
     </a-col>
     <a-col :span="4" class="itemDetailStyle">
       <!-- 金额 -->
@@ -33,7 +36,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { Input, Row, Col } from 'ant-design-vue'
+import { Input, Row, Col, InputNumber } from 'ant-design-vue'
 import { SearchBook } from '../controllers/homepage';
 import { useRouter } from 'vue-router';
 
@@ -70,7 +73,8 @@ export default defineComponent({
     'a-input': Input,
     'a-input-search': Input.Search,
     'a-row': Row,
-    'a-col': Col
+    'a-col': Col,
+    'a-input-number': InputNumber
   },
   setup() {
 

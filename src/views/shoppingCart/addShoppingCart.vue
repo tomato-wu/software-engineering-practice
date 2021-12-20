@@ -79,9 +79,8 @@ export default defineComponent({
   padding: 0 290px;
 }
 .payStyle {
-  position: absolute;
-  bottom: 2%;
-  right: 5%;
+  width: 20vw;
+  margin: 50px 70vw 0;
 }
 .totalStyle {
   margin: 30px;
