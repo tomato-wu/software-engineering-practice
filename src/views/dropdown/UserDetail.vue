@@ -16,8 +16,9 @@
       <user-address-delete v-else @handleCancle="handleAddressCancle"></user-address-delete>
     </div>
   </div>
-  <div @click="setBack" class="back">返回首页</div>
-  <LeftSquareTwoTone />
+  <div class="back">
+    <LeftSquareTwoTone @click="setBack" :style="{ fontSize: '60px', color: '#08c' }" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -85,10 +86,9 @@ export default defineComponent({
 
 <style scoped>
 .back {
-  float: right;
-  font-size: 1rem;
-  margin: 50px 100px 0 0;
-  color: grey;
+  position: absolute;
+  bottom: 6%;
+  right: 10%;
   cursor: pointer;
 }
 .back::before {

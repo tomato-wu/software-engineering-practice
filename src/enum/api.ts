@@ -20,5 +20,5 @@ export enum API {
   SaveOrder = '/cartItem/order',
   Order = '/order',
   PayMent = '/payment',
-
+  DELETE_ADDRESS = "DELETE_ADDRESS"
 }

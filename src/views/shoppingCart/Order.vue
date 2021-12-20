@@ -12,16 +12,13 @@
   <div class="buy">
     总价：
     <span class="price">￥{{ bookBriefVOList.totalPrice }}</span>
-    <a-button type="primary" class="buy--submit" @click="handleSubmit(orderId)"
-      >确定</a-button
-    >
+    <a-button type="primary" class="buy--submit" @click="handleSubmit(orderId)">确定</a-button>
     <a-button class="buy--cancle" @click="handleCancle">返回</a-button>
   </div>
-  <div v-html="PayString"></div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, toRefs, watch } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import { Checkbox, CheckboxGroup } from "ant-design-vue";
 import OrderItem from "../../components/OrderItem.vue";
 import { useHandleOrder, useOrder } from "../../controllers/order";

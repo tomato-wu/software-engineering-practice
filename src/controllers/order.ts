@@ -54,11 +54,8 @@ export function useHandleOrder() {
   const PayString = ref('') as any
   // 提交订单
   const handleSubmit = async (orderId: number) => {
-    PayString.value =  await GetPayMent(orderId)
-    console.log("haha");
-    console.log(PayString.value);
-    console.log(router);
-    router.push({path: '/orderAlipay', query: {htmlData: PayString.value}})
+    PayString.value = await GetPayMent(orderId)
+    router.push({ path: '/orderAlipay', query: { htmlData: PayString.value } })
   }
 
   // 取消 => 返回上一页
