@@ -1,7 +1,7 @@
 <template>
+  <TitleBarVue title="个人订单页面" class="TitleStyle"></TitleBarVue>
   <!--个人订单-->
-  <base-nav label="个人订单" />
-  <div class="order" v-for="(item,index) in bookBriefVOList" :key="index">
+  <div class="order" v-for="(item,index) in bookBriefVOList.bookBriefVOList" :key="index">
     <order-item
       :bookName="item.bookName"
       :bookCount="item.bookCount"
@@ -11,7 +11,7 @@
   </div>
   <div class="buy">
     总价：
-    <span class="price"></span>
+    <span class="price">￥{{ bookBriefVOList.totalPrice }}</span>
     <a-button type="primary" class="buy--submit" @click="handleSubmit">确定</a-button>
     <a-button class="buy--cancle" @click="handleCancle">返回</a-button>
   </div>
@@ -25,13 +25,14 @@ import BaseNav from "../../components/BaseNav.vue";
 import { useHandleOrder, useOrder } from "../../controllers/order";
 import { useRoute } from "vue-router";
 import { GetAllOrderDetail } from "../../controllers/cart";
+import TitleBarVue from "../../components/TitleBar.vue";
 
 export default defineComponent({
   components: {
     "a-checkbox": Checkbox,
     "a-checkbox-group": CheckboxGroup,
     OrderItem,
-    BaseNav,
+    TitleBarVue,
   },
   setup() {
     /**
@@ -71,6 +72,8 @@ export default defineComponent({
   left: 0;
   bottom: 0;
   width: 100%;
+  height: 50px;
+  line-height: 50px;
   text-align: right;
   background-color: rgb(241, 239, 239);
 }
@@ -79,6 +82,11 @@ export default defineComponent({
 }
 
 .price {
-  margin-right: 150px;
+  margin-right: 130px;
+  font-size: larger;
+  color: red;
+}
+.TitleStyle {
+  margin: 40px 30vw;
 }
 </style>

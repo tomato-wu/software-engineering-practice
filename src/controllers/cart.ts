@@ -102,7 +102,7 @@ export async function GetAllOrderDetail(orderId: number) {
     },
     method: 'get',
   }).then(async (data) => {
-    return Promise.resolve(data.data.bookBriefVOList)
+    return Promise.resolve(data.data)
   }).catch(e => {
     console.log('报错了')
     console.log(e)
