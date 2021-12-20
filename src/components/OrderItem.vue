@@ -4,19 +4,20 @@
     <a-card>
       <div class="card-content">
         <div class="card-content__picture">
-          <img src="../assets/user.png" alt="" />
+          <img :src="bookImg" alt="无法显示" />
         </div>
         <div class="card-content__detail">
-          <div class="card-content__name col">哈利·波特 （J.K.罗琳创作魔幻系列小说）</div>
+          <div class="card-content__name col">{{ bookName }}</div>
           <div class="card-content__good col">
-            <span class="price">￥25</span>
-            <span class="number">× 2</span>
+            <span class="price">￥{{ price }}</span>
+            <span class="number">× {{ bookCount }}</span>
           </div>
         </div>
       </div>
       <div class="card-deliver">
         <div class="card-deliver__left">
-          <span>配送</span> <span class="tag">可选京准达</span>
+          <span>配送</span>
+          <span class="tag">可选京准达</span>
         </div>
         <div class="card-deliver__right">
           <span>京东快递（送货上门）</span>
@@ -35,7 +36,25 @@ export default defineComponent({
   components: {
     "a-card": Card,
   },
-  setup() {},
+  props: {
+    bookName: {
+      type: String,
+      default: "",
+    },
+    price: {
+      type: String,
+      default: "",
+    },
+    bookImg: {
+      type: String,
+      default: "",
+    },
+    bookCount: {
+      type: String,
+      default: "",
+    },
+  },
+  setup() { },
 });
 </script>
 

@@ -1,10 +1,13 @@
 <template>
   <!--个人订单-->
   <base-nav label="个人订单" />
-  <div class="order">
-    <order-item />
-    <order-item />
-    <order-item />
+  <div class="order" v-for="(item,index) in bookBriefVOList" :key="index">
+    <order-item
+      :bookName="item.bookName"
+      :bookCount="item.bookCount"
+      :price="item.price"
+      :bookImg="item.bookImg"
+    />
   </div>
   <div class="buy">
     总价：
@@ -41,8 +44,12 @@ export default defineComponent({
     const bookBriefVOList = ref([]) as any
 
     onMounted(async () => {
+      console.log(orderId);
+
 
       bookBriefVOList.value = await GetAllOrderDetail(orderId)
+      console.log(bookBriefVOList.value);
+
 
     })
 

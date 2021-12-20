@@ -96,13 +96,13 @@ export async function GetAllCartToOrderFun() {
 // 添加一项到购物车
 export async function GetAllOrderDetail(orderId: number) {
   return XRequest({
-    url: `${API.Order}?orderId=${orderId}`,
+    url: `${API.Order}/${orderId}`,
     options: {
       isToken: true
     },
     method: 'get',
   }).then(async (data) => {
-    return Promise.resolve(data.data)
+    return Promise.resolve(data.data.bookBriefVOList)
   }).catch(e => {
     console.log('报错了')
     console.log(e)
