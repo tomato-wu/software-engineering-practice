@@ -27,8 +27,7 @@
   </div>
 
   <div class="payStyle">
-    <span class="totalStyle">总计：100000</span>
-    <a-button type="primary">结算</a-button>
+    <a-button type="primary" @click="GetAllCartToOrder">结算</a-button>
   </div>
 </template>
 
@@ -36,7 +35,7 @@
 import { defineComponent, onMounted, reactive, ref, toRefs, watch } from "vue";
 import { Button, Row, Col, Tag, Checkbox, Steps, Step } from "ant-design-vue";
 import { useRoute } from "vue-router";
-import { addBookCartItem, GetCartItem } from "../../controllers/cart";
+import { addBookCartItem, GetAllCartToOrderFun, GetCartItem } from "../../controllers/cart";
 import TitleBar from "../../components/TitleBar.vue";
 import ShoppingCartItem from "../../components/ShoppingCartItem.vue";
 
@@ -65,9 +64,14 @@ export default defineComponent({
       cartItem.value = await GetCartItem()
       console.log(cartItem.value);
     })
+    const GetAllCartToOrder = async () => {
 
+      await GetAllCartToOrderFun()
+
+    }
     return {
-      cartItem
+      cartItem,
+      GetAllCartToOrder
     }
   },
 });

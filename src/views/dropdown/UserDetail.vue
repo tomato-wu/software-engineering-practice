@@ -1,6 +1,6 @@
 <template>
   <div @click="setBack" class="back">返回首页</div>
-  <base-nav label="基本信息" />
+  <TitleBar title="基本信息" class="titleStyle"></TitleBar>
   <div class="user-detail">
     <!--基本信息区-->
     <div class="for-detail">
@@ -8,18 +8,13 @@
       <update-detail v-else @handleCancle="handleCancle"></update-detail>
     </div>
   </div>
-  <base-nav label="收货地址" />
+  <TitleBar title="收货地址" class="titleStyle"></TitleBar>
+
   <div class="user-address">
     <!--收获地址-->
     <div class="for-address">
-      <user-address
-        v-if="addressName === 'get-address'"
-        @switch-edit="handleAddressEdit"
-      />
-      <user-address-delete
-        v-else
-        @handleCancle="handleAddressCancle"
-      ></user-address-delete>
+      <user-address v-if="addressName === 'get-address'" @switch-edit="handleAddressEdit" />
+      <user-address-delete v-else @handleCancle="handleAddressCancle"></user-address-delete>
     </div>
   </div>
 </template>
@@ -33,6 +28,7 @@ import updateDetail from "./UserDetailUpdate.vue";
 import BaseNav from "../../components/BaseNav.vue";
 import UserAddress from "./UserAddress.vue";
 import { useGo } from "../../utils/usePage";
+import TitleBar from '../../components/TitleBar.vue'
 
 export default defineComponent({
   components: {
@@ -41,6 +37,7 @@ export default defineComponent({
     "a-card": Card,
     BaseNav,
     UserAddress,
+    TitleBar
   },
   setup() {
     const route = useRoute();
@@ -114,5 +111,8 @@ export default defineComponent({
 
 .user-detail:hover {
   /* box-shadow: 0 0 30px rgb(182, 180, 180); */
+}
+.titleStyle {
+  margin: 40px 25vw;
 }
 </style>

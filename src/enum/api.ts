@@ -17,4 +17,5 @@ export enum API {
   categories = '/book/categories',
   CartItem = '/cartItem/book',
   ADDRESS = '/user-address/address',
+  SaveOrder = '/cartItem/order',
 }

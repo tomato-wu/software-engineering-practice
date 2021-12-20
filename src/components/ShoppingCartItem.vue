@@ -6,7 +6,7 @@
     </a-col>
     <a-col :span="6" class="itemDetailStyle">
       <!-- 图书的图片 -->
-      <img class="book-item__img" :src="imgUrl" />
+      <img class="book-item__img" :src="imgUrl" @click="GetDetail(bookId)" />
     </a-col>
     <a-col :span="4" class="itemDetailStyle">
       <!-- 图书信息 -->
@@ -48,6 +48,7 @@ import { Input, Row, Col, InputNumber, Button } from 'ant-design-vue'
 import { SearchBook } from '../controllers/homepage';
 import { useRouter } from 'vue-router';
 import { deleteCartItemFun, updateCountFun } from '../controllers/cart';
+import router from '../router';
 
 export default defineComponent({
   name: "SearchBox",
@@ -100,6 +101,10 @@ export default defineComponent({
       // 删除后页面刷新一下
       location.reload();
     }
+
+    const GetDetail = async (bookId: Number) => {
+      router.push("/detail/" + bookId);
+    }
     const updateCount = async (bookId: Number, bookCount: Number) => {
       const params = {
         bookId: bookId,
@@ -111,7 +116,8 @@ export default defineComponent({
     return {
       deleteCartItem,
       value,
-      updateCount
+      updateCount,
+      GetDetail
     };
   },
 });
@@ -133,6 +139,7 @@ export default defineComponent({
 .book-item__img {
   width: 130px;
   height: 150px;
+  cursor: pointer;
 }
 .introduction {
   display: flex;

@@ -76,3 +76,19 @@ export async function addBookCartItem(cartItemParam: updateCartParams) {
     console.log(e)
   })
 }
+
+// 添加一项到购物车
+export async function GetAllCartToOrderFun() {
+  return XRequest({
+    url: API.SaveOrder,
+    options: {
+      isToken: true
+    },
+    method: 'post',
+  }).then(async (data) => {
+    return Promise.resolve(data)
+  }).catch(e => {
+    console.log('报错了')
+    console.log(e)
+  })
+}

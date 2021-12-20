@@ -4,8 +4,7 @@
       v-for="item in NavItem"
       :key="item.categoryId"
       @click="GetNavTagDetail(item.categoryId)"
-      >{{ item.categoryName }}</a-menu-item
-    >
+    >{{ item.categoryName }}</a-menu-item>
   </a-menu>
 
   <!--个人信息/退出登录-->
@@ -63,10 +62,11 @@
   <a-row style="margin-top: 80px" justify="end">
     <a-col :span="9">
       <a-pagination
-        :total="85"
+        :total="bookItem.total"
         :show-total="(total) => `一共 ${total} 本图书`"
         :page-size="20"
         v-model:current="current1"
+        @change="onChange(current1)"
       />
     </a-col>
   </a-row>
@@ -116,7 +116,7 @@ export default defineComponent({
 
     onMounted(async () => {
       NavItem.value = await GetNavItem();
-      bookItem.value = await BookItem(1);
+      bookItem.value = await BookItem(current1.value);
       console.log(bookItem.value);
     });
 
@@ -129,8 +129,8 @@ export default defineComponent({
     };
 
     // 分页
-    const onChange = (pageNumber: number) => {
-      console.log("Page: ", pageNumber);
+    const onChange = async (pageNumber: number) => {
+      bookItem.value = await BookItem(pageNumber);
     };
 
     // 个人详情跳转
