@@ -11,7 +11,7 @@ const routes = [
   { path: '/search-detail/:keyword', component: () => import('../views/SearchBookDetail.vue') },
   { path: '/nav-detail/:typeId', component: () => import('../views/NavTabDetail.vue') },
   { path: '/shopping-cart/:BookId', component: () => import('../views/shoppingCart/addShoppingCart.vue') },
-  { path: '/order', component: () => import('../views/shoppingCart/Order.vue') },
+  { path: '/order/:OrderId', component: () => import('../views/shoppingCart/Order.vue') },
 
 ]
 

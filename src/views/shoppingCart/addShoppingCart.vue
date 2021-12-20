@@ -38,6 +38,7 @@ import { useRoute } from "vue-router";
 import { addBookCartItem, GetAllCartToOrderFun, GetCartItem } from "../../controllers/cart";
 import TitleBar from "../../components/TitleBar.vue";
 import ShoppingCartItem from "../../components/ShoppingCartItem.vue";
+import router from "../../router";
 
 
 
@@ -58,6 +59,7 @@ export default defineComponent({
     const route = useRoute()
     const BookId = route.params.BookId as any
     const cartItem = ref([]) as any
+    const orderId = ref<number>(1)
 
     onMounted(async () => {
 
@@ -65,8 +67,10 @@ export default defineComponent({
       console.log(cartItem.value);
     })
     const GetAllCartToOrder = async () => {
+      // 点击结算获取购物单ID
+      orderId.value = await GetAllCartToOrderFun()
+      router.push("/order/" + orderId.value);
 
-      await GetAllCartToOrderFun()
 
     }
     return {

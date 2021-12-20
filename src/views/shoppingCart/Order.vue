@@ -7,18 +7,21 @@
     <order-item />
   </div>
   <div class="buy">
-    总价：<span class="price"></span>
+    总价：
+    <span class="price"></span>
     <a-button type="primary" class="buy--submit" @click="handleSubmit">确定</a-button>
     <a-button class="buy--cancle" @click="handleCancle">返回</a-button>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, watch } from "vue";
+import { defineComponent, onMounted, ref, toRefs, watch } from "vue";
 import { Checkbox, CheckboxGroup } from "ant-design-vue";
 import OrderItem from "../../components/OrderItem.vue";
 import BaseNav from "../../components/BaseNav.vue";
 import { useHandleOrder, useOrder } from "../../controllers/order";
+import { useRoute } from "vue-router";
+import { GetAllOrderDetail } from "../../controllers/cart";
 
 export default defineComponent({
   components: {
@@ -33,11 +36,22 @@ export default defineComponent({
      * 点击确认购买后调用远程接口存入数据库
      * 进入用户订单详情时通过用户 id 获取订单列表
      */
+    const route = useRoute()
+    const orderId = route.params.orderId as any
+    const bookBriefVOList = ref([]) as any
+
+    onMounted(async () => {
+
+      bookBriefVOList.value = await GetAllOrderDetail(orderId)
+
+    })
+
     const { handleSubmit, handleCancle } = useHandleOrder();
 
     return {
       handleSubmit,
       handleCancle,
+      bookBriefVOList
     };
   },
 });

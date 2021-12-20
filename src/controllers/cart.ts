@@ -86,7 +86,23 @@ export async function GetAllCartToOrderFun() {
     },
     method: 'post',
   }).then(async (data) => {
-    return Promise.resolve(data)
+    return Promise.resolve(data.data)
+  }).catch(e => {
+    console.log('报错了')
+    console.log(e)
+  })
+}
+
+// 添加一项到购物车
+export async function GetAllOrderDetail(orderId: number) {
+  return XRequest({
+    url: `${API.Order}?orderId=${orderId}`,
+    options: {
+      isToken: true
+    },
+    method: 'get',
+  }).then(async (data) => {
+    return Promise.resolve(data.data)
   }).catch(e => {
     console.log('报错了')
     console.log(e)
