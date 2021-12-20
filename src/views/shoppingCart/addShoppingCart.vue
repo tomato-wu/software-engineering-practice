@@ -27,7 +27,7 @@
   </div>
 
   <div class="payStyle">
-    <a-button type="primary" @click="GetAllCartToOrder">结算</a-button>
+    <a-button type="primary" class="BtnStyle" block @click="GetAllCartToOrder">结算</a-button>
   </div>
 </template>
 
@@ -94,5 +94,8 @@ export default defineComponent({
 }
 .totalStyle {
   margin: 30px;
+}
+.BtnStyle {
+  margin: 50px;
 }
 </style>
