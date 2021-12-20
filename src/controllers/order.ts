@@ -1,5 +1,8 @@
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { API } from '../enum/api';
+import router from '../router';
+import { XRequest } from '../utils/axios';
 /**
  * 订单
  */
@@ -35,19 +38,41 @@ export function useOrder() {
   }
 }
 
+async function GetPayMent(orderId: Number) {
+  return XRequest({
+    url: `${API.PayMent}/${orderId}`,
+    method: 'get',
+  }).then(async (data) => {
+    return Promise.resolve(data)
+  }).catch(e => {
+    console.log('报错了')
+    console.log(e)
+  })
+
+}
 
 export function useHandleOrder() {
-  
+  const PayString = ref('') as any
+
   // 提交订单
-  const handleSubmit = () => {}
+  const handleSubmit = async (orderId: Number) => {
+    PayString.value = await GetPayMent(orderId)
+    console.log("haha");
+    console.log(PayString.value);
+
+    const router = useRouter()
+    router.push({ path: '/orderAlipay', query: { htmlData: PayString.value } })
+  }
 
   // 取消 => 返回上一页
   const handleCancle = () => {
-    useRouter().go(-1)
+    console.log("返回上一层");
+    window.history.go(-1);
   }
 
   return {
     handleSubmit,
-    handleCancle
+    handleCancle,
+    PayString
   }
 }

@@ -12,9 +12,10 @@
   <div class="buy">
     总价：
     <span class="price">￥{{ bookBriefVOList.totalPrice }}</span>
-    <a-button type="primary" class="buy--submit" @click="handleSubmit">确定</a-button>
+    <a-button type="primary" class="buy--submit" @click="handleSubmit(orderId)">确定</a-button>
     <a-button class="buy--cancle" @click="handleCancle">返回</a-button>
   </div>
+  <div v-html="PayString"></div>
 </template>
 
 <script lang="ts">
@@ -45,21 +46,17 @@ export default defineComponent({
     const bookBriefVOList = ref([]) as any
 
     onMounted(async () => {
-      console.log(orderId);
-
-
       bookBriefVOList.value = await GetAllOrderDetail(orderId)
-      console.log(bookBriefVOList.value);
-
-
     })
 
-    const { handleSubmit, handleCancle } = useHandleOrder();
+    const { handleSubmit, handleCancle, PayString } = useHandleOrder();
 
     return {
       handleSubmit,
       handleCancle,
-      bookBriefVOList
+      bookBriefVOList,
+      orderId,
+      PayString
     };
   },
 });
