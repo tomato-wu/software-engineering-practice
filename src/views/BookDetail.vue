@@ -82,6 +82,7 @@ import { BookDetail, GetComments } from "../controllers/homepage";
 import Comments from "../components/Comments.vue"
 import TitleBar from '../components/TitleBar.vue'
 import router from "../router";
+import { addBookCartItem } from "../controllers/cart";
 
 export default defineComponent({
   name: "BookDetail",
@@ -95,15 +96,23 @@ export default defineComponent({
   },
   setup() {
     const route = useRoute()
-    const BookId = route.params.id as string
+    const BookId = route.params.id as any
     const bookDetail = ref({}) as any
     const UserComments = ref([]) as any
     onMounted(async () => {
+
+
       bookDetail.value = await BookDetail(BookId);
       UserComments.value = await GetComments(BookId);
 
+
     })
-    const addShoppingCart = async (BookId: string) => {
+    const addShoppingCart = async (BookId: Number) => {
+      const addBookItemParams = {
+        bookId: BookId,
+        bookCount: 1
+      }
+      await addBookCartItem(addBookItemParams)
       router.push("/shopping-cart/" + BookId);
     }
     return {

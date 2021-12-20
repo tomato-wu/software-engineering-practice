@@ -17,9 +17,9 @@ export interface UserInfo {
   introduceSign: string
 }
 
-// 用户详情
+// 修改购物项
 export interface updateCartParams {
-  bookId: string,
+  bookId: any,
   bookCount: Number,
 }
 

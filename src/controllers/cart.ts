@@ -23,9 +23,9 @@ export async function GetCartItem() {
 }
 
 // 删除购物车项
-export async function deleteCartItemFun(bookId: String) {
+export async function deleteCartItemFun(bookId: Number) {
   return XRequest({
-    url: `${API.DeleteCartItem}/${bookId}`,
+    url: `${API.CartItem}/${bookId}`,
     options: {
       isToken: true
     },
@@ -40,18 +40,36 @@ export async function deleteCartItemFun(bookId: String) {
 }
 
 // 修改购物车项
-export async function updateCountFun(params: updateCartParams) {
+export async function updateCountFun(cartItemParam: updateCartParams) {
   return XRequest({
-    url: API.DeleteCartItem,
+    url: `${API.CartItem}?bookId=${cartItemParam.bookId}&bookCount=${cartItemParam.bookCount}`,
     options: {
       isToken: true
     },
     method: 'PUT',
-    param: params
   }).then(async (data) => {
     message.success("修改成功")
     console.log(data);
 
+    return Promise.resolve(data)
+  }).catch(e => {
+    console.log('报错了')
+    console.log(e)
+  })
+}
+
+// 添加一项到购物车
+export async function addBookCartItem(cartItemParam: updateCartParams) {
+  return XRequest({
+    url: API.CartItem,
+    options: {
+      isToken: true
+    },
+    method: 'post',
+    param: cartItemParam
+  }).then(async (data) => {
+    message.success("添加成功")
+    console.log(data);
     return Promise.resolve(data)
   }).catch(e => {
     console.log('报错了')

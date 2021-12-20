@@ -36,7 +36,7 @@
 import { defineComponent, onMounted, reactive, ref, toRefs, watch } from "vue";
 import { Button, Row, Col, Tag, Checkbox, Steps, Step } from "ant-design-vue";
 import { useRoute } from "vue-router";
-import { GetCartItem } from "../../controllers/cart";
+import { addBookCartItem, GetCartItem } from "../../controllers/cart";
 import TitleBar from "../../components/TitleBar.vue";
 import ShoppingCartItem from "../../components/ShoppingCartItem.vue";
 
@@ -57,10 +57,11 @@ export default defineComponent({
   },
   setup() {
     const route = useRoute()
-    const BookId = route.params.BookId as string
+    const BookId = route.params.BookId as any
     const cartItem = ref([]) as any
 
     onMounted(async () => {
+
       cartItem.value = await GetCartItem()
       console.log(cartItem.value);
     })

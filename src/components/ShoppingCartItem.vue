@@ -77,7 +77,7 @@ export default defineComponent({
       default: "",
     },
     bookId: {
-      type: String,
+      type: Number,
       default: "",
     },
   },
@@ -95,14 +95,12 @@ export default defineComponent({
     onMounted(() => {
       value.value = props.bookCount
     })
-    const deleteCartItem = async (bookId: string) => {
+    const deleteCartItem = async (bookId: Number) => {
       await deleteCartItemFun(bookId)
       // 删除后页面刷新一下
       location.reload();
     }
-    const updateCount = async (bookId: string, bookCount: Number) => {
-      console.log(bookId);
-      console.log(bookCount);
+    const updateCount = async (bookId: Number, bookCount: Number) => {
       const params = {
         bookId: bookId,
         bookCount: bookCount

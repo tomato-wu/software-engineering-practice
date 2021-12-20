@@ -48,7 +48,7 @@ export async function BookItem(pageNum: number) {
 }
 
 // 书本详情
-export async function BookDetail(BookId: String) {
+export async function BookDetail(BookId: Number) {
   return XRequest({
     url: `${API.BookDetail}/${BookId}`,
     method: 'get',
@@ -61,7 +61,7 @@ export async function BookDetail(BookId: String) {
 }
 
 // 获取评论详情
-export async function GetComments(BookId: String) {
+export async function GetComments(BookId: Number) {
   return XRequest({
     url: `${API.Comments}/${BookId}`,
     method: 'get',
