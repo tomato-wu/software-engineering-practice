@@ -1,7 +1,7 @@
 import { AxiosRequestHeaders } from 'axios'
 
 // 请求方法
-export type Method = 'get' | 'GET' | 'post' | 'POST' | 'put' | 'PUT'
+export type Method = 'get' | 'GET' | 'post' | 'POST' | 'put' | 'PUT' | 'DELETE' | 'delete'
 
 // 返回消息列表 => 前后端约定好的数据返回
 export interface IResponse {

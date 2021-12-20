@@ -4,7 +4,8 @@
       v-for="item in NavItem"
       :key="item.categoryId"
       @click="GetNavTagDetail(item.categoryId)"
-    >{{ item.categoryName }}</a-menu-item>
+      >{{ item.categoryName }}</a-menu-item
+    >
   </a-menu>
 
   <!--个人信息/退出登录-->
@@ -20,7 +21,7 @@
           <a href="javascript:;">个人信息</a>
         </a-menu-item>
         <a-menu-item @click="handleUserOrder">
-          <a href="javascript:;">个人订单</a>
+          <a href="javascript:;">购物车</a>
         </a-menu-item>
         <a-menu-item @click="handleLogout">
           <a href="javascript:;">退出登录</a>
@@ -85,6 +86,7 @@ import { useRouter } from "vue-router";
 import { BookItem, GetNavItem } from "../controllers/homepage";
 import { useGo } from "../utils/usePage";
 import { XRequest } from "../utils/axios";
+import { API } from "../enum/api";
 
 export default defineComponent({
   name: "homePage",
@@ -144,9 +146,13 @@ export default defineComponent({
     // 退出登录
     const handleLogout = async () => {
       const res = await XRequest({
-        url: "/user/logout",
+        url: API.LOGIN_OUT,
+        method: "POST",
       });
-      if (res.code === 200) message.success("退出登录成功");
+      if (res.code === 200) {
+        message.success("退出登录成功");
+        go("/");
+      }
     };
 
     return {
@@ -159,7 +165,7 @@ export default defineComponent({
       GetNavTagDetail,
       handleUserDetail,
       handleUserOrder,
-      handleLogout
+      handleLogout,
     };
   },
 });

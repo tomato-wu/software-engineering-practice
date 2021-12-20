@@ -3,7 +3,7 @@
   <div class="form">
     <a-form :model="formItem" :label-col="{ span: 3 }">
       <a-form-item label="用户名">
-        <a-input v-model:value="formItem.loginName" />
+        <a-input disabled v-model:value="formItem.loginName" />
       </a-form-item>
       <a-form-item label="用户昵称">
         <a-input v-model:value="formItem.nickName" />
@@ -26,6 +26,7 @@
 import { defineComponent, reactive } from "vue";
 import { Textarea, message, Card, Input, Form, FormItem } from "ant-design-vue";
 import { XRequest } from "../../utils/axios";
+import { API } from "../../enum/api";
 
 export default defineComponent({
   components: {
@@ -36,17 +37,16 @@ export default defineComponent({
     "a-form-item": FormItem,
   },
   setup(props, { emit }) {
-    // 取消编辑
-    const handleCancle = () => {
-      emit("handleCancle");
-    };
+    const formItem = reactive({
+      loginName: localStorage.getItem("username") || "",
+    } as any);
 
     // 更新个人信息
     const handleSubmit = async () => {
-      if (formItem.introduceSign && formItem.nickName && formItem.password) {
+      if (formItem.introduceSign && formItem.nickName) {
         const res = await XRequest({
-          url: "/user/update",
-          method: "post",
+          url: API.USER_UPDATE,
+          method: "PUT",
           param: formItem,
         });
         if (res.code === 200) {
@@ -57,10 +57,10 @@ export default defineComponent({
         message.warn("数据信息未填写齐全！");
       }
     };
-
-    const formItem = reactive({
-      loginName: localStorage.getItem("username") || "",
-    } as any);
+    // 取消编辑
+    const handleCancle = () => {
+      emit("handleCancle");
+    };
 
     return {
       handleCancle,

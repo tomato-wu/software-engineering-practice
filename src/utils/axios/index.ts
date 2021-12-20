@@ -29,7 +29,7 @@ export function XRequest(properties: RequestParam) {
       data = { params: param }
     }
 
-    else if (method === 'post') {
+    else if (method === 'post' || 'put') {
       data = { data: JSON.stringify(param) }
     }
 

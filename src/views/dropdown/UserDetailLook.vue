@@ -4,7 +4,7 @@
       <div v-for="item in keys" :key="item">{{ item }}</div>
     </a-col>
 
-    <a-col class="flex value" :span="14" :md="14" :pull="2">
+    <a-col class="flex value" :span="12" :md="10" :pull="2">
       <div v-for="item in user_detail" :key="item">{{ item }}</div>
     </a-col>
     <a-col class="is-active editor" :span="4">
@@ -59,7 +59,6 @@ export default defineComponent({
   flex-direction: column;
   text-align: left;
   box-sizing: border-box;
-  font-size: 1rem;
 }
 .flex div {
   padding: 20px;
