@@ -28,6 +28,9 @@ export function XRequest(properties: RequestParam) {
     if (method === 'get') {
       data = { params: param }
     }
+    if (method === 'delete') {
+      data = { params: param }
+    }
 
     else if (method === 'post') {
       data = { data: JSON.stringify(param) }

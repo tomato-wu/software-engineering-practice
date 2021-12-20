@@ -29,21 +29,23 @@
     </a-col>
     <a-col :span="4" class="itemDetailStyle">
       <!-- 操作 -->
-      <div class="price">操作</div>
+      <div class="price">
+        <a-button type="primary" danger @click="deleteCartItem(bookId)">删除</a-button>
+      </div>
     </a-col>
   </a-row>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { Input, Row, Col, InputNumber } from 'ant-design-vue'
+import { defineComponent, onMounted, ref } from 'vue';
+import { Input, Row, Col, InputNumber, Button } from 'ant-design-vue'
 import { SearchBook } from '../controllers/homepage';
 import { useRouter } from 'vue-router';
+import { deleteCartItemFun } from '../controllers/cart';
 
 export default defineComponent({
   name: "SearchBox",
   props: {
-
     bookName: {
       type: String,
       default: "",
@@ -68,18 +70,31 @@ export default defineComponent({
       type: String,
       default: "",
     },
+    bookId: {
+      type: String,
+      default: "",
+    },
   },
   components: {
     'a-input': Input,
     'a-input-search': Input.Search,
     'a-row': Row,
     'a-col': Col,
-    'a-input-number': InputNumber
+    'a-input-number': InputNumber,
+    'a-button': Button
   },
   setup() {
 
+    onMounted(() => {
+
+    })
+    const deleteCartItem = async (bookId: string) => {
+      await deleteCartItemFun(bookId)
+      location.reload();
+    }
 
     return {
+      deleteCartItem
 
     };
   },

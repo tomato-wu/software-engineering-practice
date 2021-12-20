@@ -22,6 +22,7 @@
       :originalPrice="item.originalPrice"
       :bookCount="item.bookCount"
       :imgUrl="item.imgUrl"
+      :bookId="item.bookId"
     ></ShoppingCartItem>
   </div>
 
