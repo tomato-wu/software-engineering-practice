@@ -1,11 +1,7 @@
 <template>
   <TitleBarVue title="个人订单页面" class="TitleStyle"></TitleBarVue>
   <!--个人订单-->
-  <div
-    class="order"
-    v-for="(item, index) in bookBriefVOList.bookBriefVOList"
-    :key="index"
-  >
+  <div class="order" v-for="(item, index) in bookBriefVOList.bookBriefVOList" :key="index">
     <order-item
       :bookName="item.bookName"
       :bookCount="item.bookCount"
@@ -49,16 +45,8 @@ export default defineComponent({
     const bookBriefVOList = ref([]) as any;
 
     onMounted(async () => {
-<<<<<<< HEAD
       bookBriefVOList.value = await GetAllOrderDetail(orderId)
     })
-=======
-      console.log(orderId);
-
-      bookBriefVOList.value = await GetAllOrderDetail(orderId);
-      console.log(bookBriefVOList.value);
-    });
->>>>>>> 334eeadcc6bf82839a44ce0738f4f14ce911fee3
 
     const { handleSubmit, handleCancle, PayString } = useHandleOrder();
 
@@ -66,11 +54,8 @@ export default defineComponent({
       handleSubmit,
       handleCancle,
       bookBriefVOList,
-<<<<<<< HEAD
       orderId,
       PayString
-=======
->>>>>>> 334eeadcc6bf82839a44ce0738f4f14ce911fee3
     };
   },
 });
