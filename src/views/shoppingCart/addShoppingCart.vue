@@ -5,13 +5,13 @@
   <a-steps :current="1" class="StepStyle">
     <a-step>
       <!-- <span slot="title">Finished</span> -->
-      <template #title>Finished</template>
+      <template #title>我的购物车</template>
       <template #description>
         <span>This is a description.</span>
       </template>
     </a-step>
-    <a-step title="In Progress" sub-title="Left 00:00:08" description="This is a description." />
-    <a-step title="Waiting" description="This is a description." />
+    <a-step title="填写订单" sub-title="Left 00:00:08" description="This is a description." />
+    <a-step title="完成订单" description="This is a description." />
   </a-steps>
   <div v-for="(item,index) in cartItem" :key="index">
     <!-- 付款项 -->

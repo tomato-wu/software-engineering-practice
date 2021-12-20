@@ -1,5 +1,5 @@
 <template>
-  <TitleBar title="文学"></TitleBar>
+  <TitleBar title="分类书籍" class="titleStyle"></TitleBar>
   <a-row v-for="(item, index) in NavDetail" :key="index">
     <SearchBookItem
       @click="handleDetail(item.id)"
@@ -41,9 +41,7 @@ export default defineComponent({
     const typeId = route.params.typeId as any;
     const NavDetail = ref([]) as any;
     onMounted(async () => {
-      console.log(route.query);
       NavDetail.value = await GetNavDetail(typeId);
-      console.log(NavDetail.value);
     });
 
     // 跳转书本详情
@@ -59,4 +57,8 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.titleStyle {
+  margin: 40px 20vw;
+}
+</style>

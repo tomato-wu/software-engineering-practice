@@ -16,9 +16,5 @@ export enum API {
   SearchBook = '/book/search',
   categories = '/book/categories',
   CartItem = '/cartItem/book',
-<<<<<<< HEAD
-=======
   ADDRESS = '/user-address/address',
-  DeleteCartItem = '/cartItem/book'
->>>>>>> 07beeee94b3f1e7ffa590b634cee30a34ec301fc
 }

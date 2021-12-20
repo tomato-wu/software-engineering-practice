@@ -15,9 +15,9 @@ export async function GetNavItem() {
   })
 }
 // 点击导航栏具体项获取数据
-export async function GetNavDetail(typeId: String, pageNumber=5) {
+export async function GetNavDetail(typeId: String, pageNumber = 1) {
   return XRequest({
-    url: `${API.NAV_DETAIL}?typeId=${typeId}&&pageNumber=${pageNumber}`,
+    url: `${API.NAV_DETAIL}?typeId=${typeId}&pageNumber=${pageNumber}`,
     method: 'get',
   }).then(async (data) => {
     return Promise.resolve(data.data.records)
