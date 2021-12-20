@@ -1,10 +1,5 @@
 import { XRequest } from "../utils/axios"
-import { LoginParams, RegistParams } from "./models/user"
 import { API } from "../enum/api"
-import { message } from "ant-design-vue"
-// 页面跳转
-import { useGo } from "../utils/usePage"
-import { PageEnum } from "../enum/pageEnum"
 
 // 首页导航栏
 export async function GetNavItem() {
@@ -13,8 +8,6 @@ export async function GetNavItem() {
     method: 'get',
   }).then(async (data) => {
     console.log(data);
-    console.log("哈哈哈哈");
-
     return Promise.resolve(data.data)
   }).catch(e => {
     console.log('报错了')
@@ -22,12 +15,12 @@ export async function GetNavItem() {
   })
 }
 // 点击导航栏具体项获取数据
-export async function GetNavDetail(typeId: Number) {
+export async function GetNavDetail(typeId: String, pageNumber=5) {
   return XRequest({
-    url: `${API.NAV_DETAIL}?typeId=${typeId}`,
+    url: `${API.NAV_DETAIL}?typeId=${typeId}&&pageNumber=${pageNumber}`,
     method: 'get',
   }).then(async (data) => {
-    return Promise.resolve(data.data)
+    return Promise.resolve(data.data.records)
   }).catch(e => {
     console.log('报错了')
     console.log(e)

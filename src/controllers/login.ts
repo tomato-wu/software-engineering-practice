@@ -21,10 +21,10 @@ export async function useLogin(params: LoginParams) {
     param: params
   }).then(res => {
     if (res.code === 200) {
-      localStorage.setItem('token', res.token)
       message.success("登录成功")
       // 存储token
       window.localStorage.setItem('token', res.data.token)
+      window.localStorage.setItem('username', params.loginName)
       const go = useGo()
       go(PageEnum.HOMEPAGE)
     } else {
